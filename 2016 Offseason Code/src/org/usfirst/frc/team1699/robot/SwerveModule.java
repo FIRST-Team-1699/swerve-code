@@ -14,13 +14,13 @@ import edu.wpi.first.wpilibj.SpeedController;
 public class SwerveModule {
 	
 	// Initializers
-	String name;
+	private String name;
 	
-	SpeedController spinController;
-	SpeedController driveController;
+	private SpeedController spinController;
+	private SpeedController driveController;
 	
-	Encoder spinEncoder;
-	Encoder driveEncoder;
+	private Encoder spinEncoder;
+	private Encoder driveEncoder;
 
 	// Constructors
 	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) 
@@ -42,20 +42,23 @@ public class SwerveModule {
 	}
 	
 	// Access methods
+	public String getName() {return this.name;}
 	public void setName(String _name) {this.name = _name;}
-	
+	public SpeedController getSpinController() {return this.spinController;}
+	public SpeedController getDriveController() {return this.driveController;}
 	
 	// Methods	
-	public void setAngle(int goal)
+	public void setAngle(double goal)
 	{
-		// PID loop dis
+		// needs to use PID
+		// ask me on Tuesday for my thoughts about this
 	}
 	
 	public void setSpeed(double speed)
 	{
-		// for now, 
+		// for now
 		driveController.set(speed);
-		// maybe PID. might need to use some calculus, talk to Connor 
+		// maybe PID; might need to use some calculus, talk to Connor 
 	}
 	
 	public void setSpeedAngle(Vector setting)
