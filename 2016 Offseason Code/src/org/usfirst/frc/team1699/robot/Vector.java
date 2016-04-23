@@ -16,7 +16,13 @@ public class Vector
 	private double value;
 	
 	
-	// Constructor
+	// Constructors
+	public Vector()
+	{
+		this.angle = 0;
+		this.value = 0;
+	}
+	
 	public Vector(double _value, double _angle)
 	{
 		this.angle = _angle;

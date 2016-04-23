@@ -22,6 +22,7 @@ public class SwerveDrive extends RobotDrive {
 	
 	final double X_DEADZONE = .07;
 	final double Y_DEADZONE = .07;
+	final double ROTATE_DEADZONE = .07;
 	
 	double speed = 0;
 	double angle = 0;
@@ -37,6 +38,7 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Methods
+	// Crab Drive method
 	public void CrabDrive(double xStick, double yStick)
 	{		
 		// Check if in deadzone
@@ -60,6 +62,7 @@ public class SwerveDrive extends RobotDrive {
 		backRight.setSpeedAngle(output);
 	}
 	
+	// Crab Drive method that returns an ArrayList containing four vectors
 	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick)
 	{
 		// Check if in deadzone
@@ -86,36 +89,61 @@ public class SwerveDrive extends RobotDrive {
 		return returned;
 	}
 	
+	// Rotate Drive method
 	public void RotateDrive(double ammount)
 	{
-		// notes: redo with vectors
-		// also, make it not apply values if in deadzone
-		// also, apply to vector method
-		frontLeft.setSpeed(ammount);
-		backLeft.setSpeed(ammount);
-		frontRight.setSpeed(ammount);
-		backRight.setSpeed(ammount);
-		
-		frontLeft.setAngle(1 * ROTATE_ANGLE);
-		backLeft.setAngle(-1 * ROTATE_ANGLE);
-		frontRight.setAngle(-1 * ROTATE_ANGLE);
-		backRight.setAngle(1* ROTATE_ANGLE);
+		if (Math.abs(ammount) > ROTATE_DEADZONE)
+		{
+			Vector frontLeftVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			Vector backLeftVector = new Vector(ammount, -1 * ROTATE_ANGLE);
+			Vector frontRightVector = new Vector(ammount, -1 * ROTATE_ANGLE);
+			Vector backRightVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			
+			frontLeft.setSpeedAngle(frontLeftVector);
+			backLeft.setSpeedAngle(backLeftVector);
+			frontRight.setSpeedAngle(frontRightVector);
+			backRight.setSpeedAngle(backRightVector);
+		}
 	}
 	
+	// Rotate Drive method that returns an ArrayList containing four vectors
 	public ArrayList<Vector> RotateDriveVectors(double ammount)
 	{
-		Vector frontLeftVector = new Vector(ammount, 1 * ROTATE_ANGLE);
-		Vector backLeftVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-		Vector frontRightVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-		Vector backRightVector = new Vector(ammount, 1 * ROTATE_ANGLE);
-		
 		ArrayList<Vector> returned = new ArrayList<Vector>();
-		returned.add(frontLeftVector); // frontLeft
-		returned.add(backLeftVector); // backLeft
-		returned.add(frontRightVector); // frontRight
-		returned.add(backRightVector); // backRight
+		
+		if (Math.abs(ammount) > ROTATE_DEADZONE)
+		{
+			Vector frontLeftVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			Vector backLeftVector = new Vector(ammount, -1 * ROTATE_ANGLE);
+			Vector frontRightVector = new Vector(ammount, -1 * ROTATE_ANGLE);
+			Vector backRightVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			
+			returned.add(frontLeftVector); // frontLeft
+			returned.add(backLeftVector); // backLeft
+			returned.add(frontRightVector); // frontRight
+			returned.add(backRightVector); // backRight
+		}
+		else 
+		{
+			returned.add(new Vector());
+			returned.add(new Vector());
+			returned.add(new Vector());
+			returned.add(new Vector());
+		}
 		
 		return returned;
+	}
+	
+	// Unicorn Drive method
+	public void UnicornDrive(double xStick, double yStick, double rotateStick)
+	{
+		ArrayList<Vector> crabVectors = this.CrabDriveVectors(xStick, yStick);
+		ArrayList<Vector> rotateVectors = this.RotateDriveVectors(rotateStick);
+		
+		frontLeft.setSpeedAngle(Vector.getResultantVector(crabVectors.get(0), rotateVectors.get(0)));
+		backLeft.setSpeedAngle(Vector.getResultantVector(crabVectors.get(1), rotateVectors.get(1)));
+		frontRight.setSpeedAngle(Vector.getResultantVector(crabVectors.get(2), rotateVectors.get(2)));
+		backRight.setSpeedAngle(Vector.getResultantVector(crabVectors.get(3), rotateVectors.get(3)));
 	}
 
 }
