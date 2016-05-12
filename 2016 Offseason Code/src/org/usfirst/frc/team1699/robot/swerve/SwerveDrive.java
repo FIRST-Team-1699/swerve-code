@@ -2,8 +2,6 @@ package org.usfirst.frc.team1699.robot.swerve;
 
 import java.util.ArrayList;
 
-import org.usfirst.frc.team1699.robot.iniReader;
-
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class SwerveDrive extends RobotDrive {
@@ -14,13 +12,11 @@ public class SwerveDrive extends RobotDrive {
 	private SwerveModule frontRight;
 	private SwerveModule backRight;	
 	
-	private iniReader config = new iniReader("1699-swerve-config.ini");
-	
 	// Rotation stuff
-	final double FRAME_LENGTH = config.getValue("frameLength");
-	final double FRAME_WIDTH = config.getValue("frameWidth");	
+	double frameLength;
+	double frameWidth;
 	
-	final double ROTATE_ANGLE = Math.toDegrees(Math.atan(FRAME_LENGTH/FRAME_WIDTH));	
+	double rotateAngle;	
 	
 	final double X_DEADZONE = .07;
 	final double Y_DEADZONE = .07;
@@ -30,13 +26,16 @@ public class SwerveDrive extends RobotDrive {
 	double angle = 0;
 	
 	// Constructors
-	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight, SwerveModule _backRight)
+	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight, SwerveModule _backRight, double _length, double _width)
 	{
 		super(_frontLeft.getDriveController(), _backLeft.getDriveController(), _frontRight.getDriveController(), _backRight.getDriveController());
 		this.frontLeft = _frontLeft;
 		this.backLeft = _backLeft;
 		this.frontRight = _frontRight;
 		this.backRight = _backRight;
+		this.frameLength = _length;
+		this.frameWidth = _width;
+		this.rotateAngle = Math.toDegrees(Math.atan(frameLength/frameWidth)); 
 	}
 	
 	// Methods
@@ -96,10 +95,10 @@ public class SwerveDrive extends RobotDrive {
 	{
 		if (Math.abs(ammount) > ROTATE_DEADZONE)
 		{
-			Vector frontLeftVector = new Vector(ammount, 1 * ROTATE_ANGLE);
-			Vector backLeftVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-			Vector frontRightVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-			Vector backRightVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);
+			Vector backLeftVector = new Vector(ammount, -1 * rotateAngle);
+			Vector frontRightVector = new Vector(ammount, -1 * rotateAngle);
+			Vector backRightVector = new Vector(ammount, 1 * rotateAngle);
 			
 			frontLeft.setSpeedAngle(frontLeftVector);
 			backLeft.setSpeedAngle(backLeftVector);
@@ -115,10 +114,10 @@ public class SwerveDrive extends RobotDrive {
 		
 		if (Math.abs(ammount) > ROTATE_DEADZONE)
 		{
-			Vector frontLeftVector = new Vector(ammount, 1 * ROTATE_ANGLE);
-			Vector backLeftVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-			Vector frontRightVector = new Vector(ammount, -1 * ROTATE_ANGLE);
-			Vector backRightVector = new Vector(ammount, 1 * ROTATE_ANGLE);
+			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);
+			Vector backLeftVector = new Vector(ammount, -1 * rotateAngle);
+			Vector frontRightVector = new Vector(ammount, -1 * rotateAngle);
+			Vector backRightVector = new Vector(ammount, 1 * rotateAngle);
 			
 			returned.add(frontLeftVector); // frontLeft
 			returned.add(backLeftVector); // backLeft
