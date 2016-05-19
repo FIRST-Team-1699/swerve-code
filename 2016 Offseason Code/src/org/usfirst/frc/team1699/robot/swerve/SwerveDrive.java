@@ -1,3 +1,12 @@
+/*
+ * FIRST Team 1699
+ * 
+ * This class is the RobotDrive for Swerve robots.
+ * 
+ * @author thatging3rkid, FIRST Team 1699
+ * 
+ * v0.1-norobot, released on 5/18/2016
+ */
 package org.usfirst.frc.team1699.robot.swerve;
 
 import java.util.ArrayList;
@@ -18,14 +27,15 @@ public class SwerveDrive extends RobotDrive {
 	
 	double rotateAngle;	
 	
+	double speed = 0;
+	double angle = 0;
+	
 	final double X_DEADZONE = .07;
 	final double Y_DEADZONE = .07;
 	final double ROTATE_DEADZONE = .07;
 	
-	double speed = 0;
-	double angle = 0;
 	
-	// Constructors
+	// Constructor
 	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight, SwerveModule _backRight, double _length, double _width)
 	{
 		super(_frontLeft.getDriveController(), _backLeft.getDriveController(), _frontRight.getDriveController(), _backRight.getDriveController());
@@ -35,8 +45,10 @@ public class SwerveDrive extends RobotDrive {
 		this.backRight = _backRight;
 		this.frameLength = _length;
 		this.frameWidth = _width;
-		this.rotateAngle = Math.toDegrees(Math.atan(frameLength/frameWidth)); 
+		this.rotateAngle = Math.toDegrees(Math.atan(frameLength/frameWidth));
+		new SwerveUpdateThread(this.frontLeft, this.backLeft, this.frontRight, this.backRight).start();
 	}
+	
 	
 	// Methods
 	// Crab Drive method
