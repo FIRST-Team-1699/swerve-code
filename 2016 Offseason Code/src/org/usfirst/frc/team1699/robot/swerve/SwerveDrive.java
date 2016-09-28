@@ -52,15 +52,11 @@ public class SwerveDrive extends RobotDrive {
 	
 	// Methods
 	// Crab Drive method
-	public void CrabDrive(double xStick, double yStick)
-	{		
+	public void CrabDrive(double xStick, double yStick){		
 		// Check if in deadzone
-		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0))
-		{
+		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}
-		else
-		{			
+		}else{			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -76,15 +72,11 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Crab Drive method that returns an ArrayList containing four vectors
-	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick)
-	{
+	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick){
 		// Check if in deadzone
-		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0))
-		{
+		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}
-		else
-		{			
+		}else{			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -103,8 +95,7 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Rotate Drive method
-	public void RotateDrive(double ammount)
-	{
+	public void RotateDrive(double ammount){
 		if (Math.abs(ammount) > ROTATE_DEADZONE)
 		{
 			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);

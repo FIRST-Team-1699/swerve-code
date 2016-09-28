@@ -33,8 +33,11 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer
 
 	public void stop()
 	{
-		if (this.endTime == null) {System.out.println("User tried to end a finished timer.");}
-		else {this.endTime = super.getFPGATimestamp();}
+		if (this.endTime == null) {
+			System.out.println("User tried to end a finished timer.");
+		}else {
+			this.endTime = super.getFPGATimestamp();
+		}
 		this.timePassed = Math.abs(startTime - endTime);
 	}
 	
