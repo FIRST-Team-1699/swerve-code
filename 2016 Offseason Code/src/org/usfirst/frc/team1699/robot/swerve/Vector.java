@@ -17,14 +17,12 @@ public class Vector
 	
 	
 	// Constructors
-	public Vector()
-	{
+	public Vector(){
 		this.angle = 0;
 		this.value = 0;
 	}
 	
-	public Vector(double _value, double _angle)
-	{
+	public Vector(double _value, double _angle){
 		this.angle = _angle;
 		this.value = _value;
 	}
@@ -40,8 +38,7 @@ public class Vector
 	
 	// Methods
 	// Adds two vectors and sets the current vector to the resultant
-	public void setToResultantVector(Vector v1, Vector v2)
-	{
+	public void setToResultantVector(Vector v1, Vector v2){
 		double v1x = v1.getValue() * Math.cos(Math.toRadians(v1.getAngle()));
 		double v1y = v1.getValue() * Math.sin(Math.toRadians(v1.getAngle()));
 		
@@ -54,8 +51,7 @@ public class Vector
 	}
 	
 	// Returns the resultant of two vectors
-	static public Vector getResultantVector(Vector v1, Vector v2)
-	{
+	static public Vector getResultantVector(Vector v1, Vector v2){
 		Vector resultant = new Vector(0, 0);
 		
 		double v1x = v1.getValue() * Math.cos(Math.toRadians(v1.getAngle()));

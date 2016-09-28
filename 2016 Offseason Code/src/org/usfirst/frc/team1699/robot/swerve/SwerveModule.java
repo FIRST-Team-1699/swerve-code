@@ -28,11 +28,9 @@ public class SwerveModule {
 	
 	private PIDLoop spinLoop;
 	private PIDLoop driveLoop;
-
 	
 	// Constructors
-	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) 
-	{
+	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) {
 		this.name = "";
 		this.spinController = _spinController;
 		this.driveController = _driveController;
@@ -41,11 +39,9 @@ public class SwerveModule {
 		spinLoop = new PIDLoop("" + "spin", .1, .1, 0, this.spinEncoder); // generic PID values in here, they need to be tuned or input
 		driveLoop = new PIDLoop("" + "drive", .1, 0, .1, this.driveEncoder);
 		driveLoop.setUseRate(true);
-		
 	}
 	
-	public SwerveModule(String _name, SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) 
-	{
+	public SwerveModule(String _name, SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) {
 		this.name = _name;
 		this.spinController = _spinController;
 		this.driveController = _driveController;
@@ -55,7 +51,6 @@ public class SwerveModule {
 		driveLoop = new PIDLoop(this.name + "drive", .1, 0, .1, this.driveEncoder);
 		driveLoop.setUseRate(true);
 	}
-	
 	
 	// Getters and Setters
 	public String getName() {

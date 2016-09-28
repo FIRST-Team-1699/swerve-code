@@ -30,9 +30,7 @@ public class SwerveUpdateThread extends Thread {
 		this.module2 = _module2;
 		this.module3 = _module3;
 		this.module4 = _module4;
-		
 	}
-	
 	
 	// Thread methods
 	public void start() {
@@ -50,8 +48,7 @@ public class SwerveUpdateThread extends Thread {
 	
 	public void run() {
 		// Right now, this updates all the modules in one order. This should be tested, to make sure one module does not "lead" the others
-		while (ds.isEnabled())
-		{
+		while (ds.isEnabled()){
 			module1.updateSpinPID();
 			module1.updateDrivePID();
 		
@@ -74,6 +71,4 @@ public class SwerveUpdateThread extends Thread {
 			//iterator += 1;
 		}
 	}
-	
-
 }

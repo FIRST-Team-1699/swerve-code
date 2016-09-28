@@ -20,25 +20,26 @@ public class ConfigSection {
 	private ArrayList<ConfigLine> lines = new ArrayList<ConfigLine>();
 	
 	// Constructor
-	public ConfigSection(String _name) 
-	{
+	public ConfigSection(String _name){
 		this.name = _name;
 	}
 
 	// Getters and setters
-	public String getName() {return this.name;}
-	
+	public String getName() {
+		return this.name;
+	}
 	
 	// Methods
-	public void add(ConfigLine line) {lines.add(line);}
-	public void add(String _name, Object _value)
-	{
+	public void add(ConfigLine line) {
+		lines.add(line);
+	}
+	
+	public void add(String _name, Object _value){
 		ConfigLine line = new ConfigLine(_name, _value);
 		this.add(line);
 	}
 
-	private Object findObject(String name)
-	{
+	private Object findObject(String name){
 		// Initializes variables
 		int count1 = 0;
 		Object result = null;
@@ -63,8 +64,7 @@ public class ConfigSection {
 		return result;
 	}
 	
-	private String cleanString(String s)
-	{
+	private String cleanString(String s){
 		for (int count1 = 0; count1 < s.length(); count1 += 1)
 		{
 			if ((s.charAt(count1) == '[') || (s.charAt(count1) == ']'))
@@ -81,14 +81,31 @@ public class ConfigSection {
 		return s;
 	}
 	
-	public Integer findInt(String name) {return Integer.parseInt(this.findObject(name).toString());}
-	public Double findDouble(String name) {return Double.parseDouble(this.findObject(name).toString());}
-	public Boolean findBool(String name) {return Boolean.parseBoolean(this.findObject(name).toString());}
-	public String findString(String name) {return this.findObject(name).toString();}
-	public Character findChar(String name) {return this.findObject(name).toString().charAt(0);}
-	public List<String> findListString(String name) {return Arrays.asList(this.cleanString(this.findObject(name).toString()).split("\\s*,\\s*"));}
-	public List<Integer> findListInt(String name)
-	{
+	public Integer findInt(String name) {
+		return Integer.parseInt(this.findObject(name).toString());
+	}
+	
+	public Double findDouble(String name) {
+		return Double.parseDouble(this.findObject(name).toString());
+	}
+	
+	public Boolean findBool(String name) {
+		return Boolean.parseBoolean(this.findObject(name).toString());
+	}
+	
+	public String findString(String name) {
+		return this.findObject(name).toString();
+	}
+	
+	public Character findChar(String name) {
+		return this.findObject(name).toString().charAt(0);
+	}
+	
+	public List<String> findListString(String name) {
+		return Arrays.asList(this.cleanString(this.findObject(name).toString()).split("\\s*,\\s*"));
+	}
+	
+	public List<Integer> findListInt(String name){
 		List<Integer> out = new ArrayList<Integer>();
 		for(String s : this.findListString(name)) 
 		{
@@ -97,8 +114,8 @@ public class ConfigSection {
 		}
 		return out;
 	}
-	public List<Double> findListDouble(String name)
-	{
+	
+	public List<Double> findListDouble(String name){
 		List<Double> out = new ArrayList<Double>();
 		for(String s : this.findListString(name))
 		{
@@ -107,8 +124,8 @@ public class ConfigSection {
 		}
 		return out;
 	}
-	public List<Boolean> findListBool(String name)
-	{
+	
+	public List<Boolean> findListBool(String name){
 		List<Boolean> out = new ArrayList<Boolean>();
 		for(String s : this.findListString(name))
 		{
@@ -119,8 +136,7 @@ public class ConfigSection {
 	}
 	
 	// toString Method
-	public String toString()
-	{
+	public String toString(){
 		String output = "";
 		output = output + "Section: " + this.name + "\n";
 		for(ConfigLine cl : lines)

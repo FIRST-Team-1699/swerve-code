@@ -34,10 +34,8 @@ public class SwerveDrive extends RobotDrive {
 	final double Y_DEADZONE = .07;
 	final double ROTATE_DEADZONE = .07;
 	
-	
 	// Constructor
-	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight, SwerveModule _backRight, double _length, double _width)
-	{
+	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight, SwerveModule _backRight, double _length, double _width){
 		super(_frontLeft.getDriveController(), _backLeft.getDriveController(), _frontRight.getDriveController(), _backRight.getDriveController());
 		this.frontLeft = _frontLeft;
 		this.backLeft = _backLeft;
@@ -48,7 +46,6 @@ public class SwerveDrive extends RobotDrive {
 		this.rotateAngle = Math.toDegrees(Math.atan(frameLength/frameWidth));
 		new SwerveUpdateThread(this.frontLeft, this.backLeft, this.frontRight, this.backRight).start();
 	}
-	
 	
 	// Methods
 	// Crab Drive method
@@ -96,8 +93,7 @@ public class SwerveDrive extends RobotDrive {
 	
 	// Rotate Drive method
 	public void RotateDrive(double ammount) {
-		if (Math.abs(ammount) > ROTATE_DEADZONE)
-		{
+		if (Math.abs(ammount) > ROTATE_DEADZONE){
 			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);
 			Vector backLeftVector = new Vector(ammount, -1 * rotateAngle);
 			Vector frontRightVector = new Vector(ammount, -1 * rotateAngle);
@@ -114,8 +110,7 @@ public class SwerveDrive extends RobotDrive {
 	public ArrayList<Vector> RotateDriveVectors(double ammount) {
 		ArrayList<Vector> returned = new ArrayList<Vector>();
 		
-		if (Math.abs(ammount) > ROTATE_DEADZONE)
-		{
+		if (Math.abs(ammount) > ROTATE_DEADZONE){
 			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);
 			Vector backLeftVector = new Vector(ammount, -1 * rotateAngle);
 			Vector frontRightVector = new Vector(ammount, -1 * rotateAngle);
@@ -125,7 +120,7 @@ public class SwerveDrive extends RobotDrive {
 			returned.add(backLeftVector); // backLeft
 			returned.add(frontRightVector); // frontRight
 			returned.add(backRightVector); // backRight
-		} else {
+		}else{
 			returned.add(new Vector());
 			returned.add(new Vector());
 			returned.add(new Vector());

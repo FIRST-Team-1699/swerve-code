@@ -24,33 +24,27 @@ public class ConfigFile {
 	BufferedReader reader;
     ArrayList<ConfigSection> sections = new ArrayList<ConfigSection>();
 
-
     // Constructors
-	public ConfigFile()
-	{
+	public ConfigFile(){
 		file = new File("/home/lvuser/1699-config.ini");
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath() + " (default)");
         this.readFile();
     }
 
-	public ConfigFile(String fullPath)
-	{
+	public ConfigFile(String fullPath){
 		file = new File(fullPath);
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath());
         this.readFile();
     }
 
-	public ConfigFile(File _file)
-	{
+	public ConfigFile(File _file){
 		this.file = _file;
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath());
         this.readFile();
     }
 
-
     // Methods
-    public void readFile()
-    {
+    public void readFile(){
         ConfigSection section = new ConfigSection("global");
         this.sections.add(section);
 
@@ -152,8 +146,7 @@ public class ConfigFile {
         
     }
     
-	public ConfigSection findSection(String name) 
-    {
+	public ConfigSection findSection(String name){
     	// Cycle through the ArrayList, return ConfigSection if names are equal
 		for (ConfigSection cs : sections)
 		{
@@ -163,10 +156,8 @@ public class ConfigFile {
 		throw new NotFoundException("Section not found: " + name + ".");
     }
     
-    
     // Testing method
-    protected void dump()
-    {
+    protected void dump(){
     	for (ConfigSection cs : sections)
     	{
     		System.out.println(cs.toString());

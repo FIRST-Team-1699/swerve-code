@@ -35,10 +35,8 @@ public class PIDLoop{
 	
 	boolean useRate = false;
 	
-	
 	// Constructors
-	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk, Potentiometer _pot)
-	{
+	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk, Potentiometer _pot){
 		this.name = _name;
 		this.Pk = _Pk;
 		this.Ik = _Ik;
@@ -47,8 +45,7 @@ public class PIDLoop{
 		this.updateValues();
 	}
 	
-	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk, Encoder _enc)
-	{
+	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk, Encoder _enc){
 		this.name = _name;
 		this.Pk = _Pk;
 		this.Ik = _Ik;
@@ -57,27 +54,37 @@ public class PIDLoop{
 		this.updateValues();
 	}
 	
-	
 	// Getters and Setters
-	public boolean getUseRate() {return this.useRate;}
-	public void setUseRate(boolean _useRate) {this.useRate = _useRate;}
-	public void setGoal(double _goalValue) {this.goalValue = _goalValue;}
+	public boolean getUseRate() {
+		return this.useRate;
+	}
+	
+	public void setUseRate(boolean _useRate) {
+		this.useRate = _useRate;
+	}
+	
+	public void setGoal(double _goalValue) {
+		this.goalValue = _goalValue;
+	}
 
 	// Methods
-	private void updateValues()
-	{
+	private void updateValues(){
 		// Put save old value
 		this.oldValue = curValue;
 		
 		// Checks for null sensor
-		if (this.enc == null) {curValue = pot.get();}
-		else if (useRate == true) {curValue = enc.getRate();}
-		else if (useRate == false) {curValue = enc.get();}
-		else {throw new NullPointerException("Null Potentiometer and Encoder links in PIDLoop: " + name);}
+		if (this.enc == null) {
+			curValue = pot.get();
+		}else if (useRate == true) {
+			curValue = enc.getRate();
+		}else if (useRate == false) {
+			curValue = enc.get();
+		}else{
+			throw new NullPointerException("Null Potentiometer and Encoder links in PIDLoop: " + name);
+		}
 	}
 	
-	public double getPIDValue()
-	{
+	public double getPIDValue(){
 		this.updateValues();
 		timer.stop();
 		if (iterations == 0) {return 0.0;}
@@ -94,12 +101,10 @@ public class PIDLoop{
 		
 		timer.start();
 		iterations += 1;
-		return Pvalue + Ivalue+ Dvalue;
-		
+		return Pvalue + Ivalue+ Dvalue;	
 	}
 	
-	public double getIntegratedPIDValue()
-	{
+	public double getIntegratedPIDValue(){
 		// Get the rate from above
 		double rateValue = this.getPIDValue();
 		
@@ -107,16 +112,11 @@ public class PIDLoop{
 		integralOut += rateValue;
 		
 		// Make sure it's in bounds
-		
-		if (Math.abs(integralOut) > 1.0)
-		{
-			if(integralOut > 1.0)
-			{
+		if (Math.abs(integralOut) > 1.0){
+			if(integralOut > 1.0){
 				System.out.println("Hitting max in PIDLoop " + this.name);
 				integralOut = 1.0;
-			}
-			else if (integralOut < -1.0)
-			{
+			}else if (integralOut < -1.0){
 				System.out.println("Hitting min in PIDLoop " + this.name);
 			}
 		}
