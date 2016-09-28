@@ -11,8 +11,7 @@ package org.usfirst.frc.team1699.robot.pid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
-public class PIDLoop
-{
+public class PIDLoop{
 
 	// Initializers
 	double Pk;
