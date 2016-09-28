@@ -13,16 +13,16 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class SwerveUpdateThread extends Thread {
 
 	// Initializers
-	priavte SwerveModule module1;
-	priavte SwerveModule module2;
-	priavte SwerveModule module3;
-	priavte SwerveModule module4;
+	private SwerveModule module1;
+	private SwerveModule module2;
+	private SwerveModule module3;
+	private SwerveModule module4;
 	
 	private Thread thread;
 	
 	//priavte long iterator; // I don't think this is required anymore
 	
-	priavte DriverStation ds = DriverStation.getInstance();
+	private DriverStation ds = DriverStation.getInstance();
 	
 	// Constructor
 	public SwerveUpdateThread(SwerveModule _module1, SwerveModule _module2, SwerveModule _module3, SwerveModule _module4) {
