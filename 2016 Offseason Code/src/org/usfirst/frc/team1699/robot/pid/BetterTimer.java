@@ -33,6 +33,7 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer
 		}else {
 			this.endTime = super.getFPGATimestamp();
 		}
+		
 		this.timePassed = Math.abs(startTime - endTime);
 	}
 	
