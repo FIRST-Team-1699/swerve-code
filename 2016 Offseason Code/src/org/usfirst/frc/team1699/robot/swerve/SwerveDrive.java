@@ -56,7 +56,7 @@ public class SwerveDrive extends RobotDrive {
 		// Check if in deadzone
 		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}else {			
+		} else {			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -76,7 +76,7 @@ public class SwerveDrive extends RobotDrive {
 		// Check if in deadzone
 		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}else {			
+		} else {			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -125,7 +125,7 @@ public class SwerveDrive extends RobotDrive {
 			returned.add(backLeftVector); // backLeft
 			returned.add(frontRightVector); // frontRight
 			returned.add(backRightVector); // backRight
-		}else {
+		} else {
 			returned.add(new Vector());
 			returned.add(new Vector());
 			returned.add(new Vector());
