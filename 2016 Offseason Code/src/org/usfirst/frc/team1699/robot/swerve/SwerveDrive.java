@@ -52,11 +52,11 @@ public class SwerveDrive extends RobotDrive {
 	
 	// Methods
 	// Crab Drive method
-	public void CrabDrive(double xStick, double yStick){		
+	public void CrabDrive(double xStick, double yStick) {		
 		// Check if in deadzone
 		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}else{			
+		}else {			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -72,11 +72,11 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Crab Drive method that returns an ArrayList containing four vectors
-	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick){
+	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick) {
 		// Check if in deadzone
 		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0) && ((yStick + Y_DEADZONE) < 0)){
 			speed = 0;
-		}else{			
+		}else {			
 			speed = Math.hypot(xStick, yStick);
 			angle = Math.atan(yStick / xStick);
 			// angle needs conversion to meet the output from the encoder
@@ -95,7 +95,7 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Rotate Drive method
-	public void RotateDrive(double ammount){
+	public void RotateDrive(double ammount) {
 		if (Math.abs(ammount) > ROTATE_DEADZONE)
 		{
 			Vector frontLeftVector = new Vector(ammount, 1 * rotateAngle);
@@ -111,8 +111,7 @@ public class SwerveDrive extends RobotDrive {
 	}
 	
 	// Rotate Drive method that returns an ArrayList containing four vectors
-	public ArrayList<Vector> RotateDriveVectors(double ammount)
-	{
+	public ArrayList<Vector> RotateDriveVectors(double ammount) {
 		ArrayList<Vector> returned = new ArrayList<Vector>();
 		
 		if (Math.abs(ammount) > ROTATE_DEADZONE)
@@ -126,21 +125,17 @@ public class SwerveDrive extends RobotDrive {
 			returned.add(backLeftVector); // backLeft
 			returned.add(frontRightVector); // frontRight
 			returned.add(backRightVector); // backRight
-		}
-		else 
-		{
+		}else {
 			returned.add(new Vector());
 			returned.add(new Vector());
 			returned.add(new Vector());
 			returned.add(new Vector());
 		}
-		
 		return returned;
 	}
 	
 	// Unicorn Drive method
-	public void UnicornDrive(double xStick, double yStick, double rotateStick)
-	{
+	public void UnicornDrive(double xStick, double yStick, double rotateStick) {
 		ArrayList<Vector> crabVectors = this.CrabDriveVectors(xStick, yStick);
 		ArrayList<Vector> rotateVectors = this.RotateDriveVectors(rotateStick);
 		
@@ -149,5 +144,4 @@ public class SwerveDrive extends RobotDrive {
 		frontRight.setSpeedAngle(Vector.getResultantVector(crabVectors.get(2), rotateVectors.get(2)));
 		backRight.setSpeedAngle(Vector.getResultantVector(crabVectors.get(3), rotateVectors.get(3)));
 	}
-
 }
