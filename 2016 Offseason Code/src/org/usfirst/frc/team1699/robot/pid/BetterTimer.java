@@ -23,7 +23,9 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer
 	
 	// Methods
 	public void start(){
-		if (this.startTime == null) {System.out.println("User tried to start a started timer.");}
+		if (this.startTime == null) {
+			System.out.println("User tried to start a started timer.");
+		}
 		else {this.startTime = super.getFPGATimestamp();}
 	}
 
