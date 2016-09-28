@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class SwerveModule {
 	
-	
 	// Initializers
 	private String name;
 	
@@ -59,58 +58,96 @@ public class SwerveModule {
 	
 	
 	// Getters and Setters
-	public String getName() {return this.name;}
-	public void setName(String _name) {this.name = _name;}
-	public SpeedController getSpinController() {return this.spinController;}
-	public SpeedController getDriveController() {return this.driveController;}
-	public Encoder getDriveEncoder() {return this.driveEncoder;}
-	public double getDriveEncoderValue() {return this.driveEncoder.get();}
-	public boolean getReverseSpin() {return reverseSpin;}
-	public boolean getReverseDrive() {return reverseDrive;}
-	public void reverseSpinMotor() {reverseSpin = !reverseSpin;}
-	public void reverseDriveMotor() {reverseDrive = !reverseDrive;}
-	public void setReverseSpin (boolean _spin) {this.reverseSpin = _spin;}
-	public void setReverseDrive (boolean _drive) {this.reverseDrive = _drive;}
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String _name) {
+		this.name = _name;
+	}
+	
+	public SpeedController getSpinController() {
+		return this.spinController;
+	}
+	
+	public SpeedController getDriveController() {
+		return this.driveController;
+	}
+	
+	public Encoder getDriveEncoder() {
+		return this.driveEncoder;
+	}
+	
+	public double getDriveEncoderValue() {
+		return this.driveEncoder.get();
+	}
+	
+	public boolean getReverseSpin() {
+		return reverseSpin;
+	}
+	
+	public boolean getReverseDrive() {
+		return reverseDrive;
+	}
+	
+	public void reverseSpinMotor() {
+		reverseSpin = !reverseSpin;
+	}
+	
+	public void reverseDriveMotor() {
+		reverseDrive = !reverseDrive;
+	}
+	
+	public void setReverseSpin (boolean _spin) {
+		this.reverseSpin = _spin;
+	}
+	
+	public void setReverseDrive (boolean _drive) {
+		this.reverseDrive = _drive;
+	}
 
 	
-	// Methods	
-	protected void updateSpinPID() {spinController.set(spinLoop.getPIDValue());}
-	protected void updateDrivePID() {driveController.set(driveLoop.getIntegratedPIDValue());}
+	// Methods
+	protected void updatePID() {
+		this.updateSpinPID();
+		this.updateDrivePID();
+	}
+
+	protected void updateSpinPID() {
+		spinController.set(spinLoop.getPIDValue());
+	}
 	
-	public void setAngle(double _goal)
-	{
-		if (reverseSpin == true)
-		{
+	protected void updateDrivePID() {
+		driveController.set(driveLoop.getIntegratedPIDValue());
+	}
+	
+	public void setAngle(double _goal) {
+		if (reverseSpin == true) {
 			spinLoop.setGoal(-1 * _goal); // don't know if this will work
-		}
-		else if (reverseSpin == false)
-		{
+		} else if (reverseSpin == false) {
 			spinLoop.setGoal(_goal);
 		}
 	}
 	
-	public void setSpeed(double _speed) 
-	{
-		if (reverseDrive == true)
-		{
+	public void setSpeed(double _speed) {
+		if (reverseDrive == true) {
 			driveLoop.setGoal(-1 * _speed);
-		}
-		else if (reverseDrive == false)
-		{
+		} else if (reverseDrive == false) {
 			driveLoop.setGoal(_speed);
 		}
 	}
 	
-	public void setSpeedAngle(Vector setting)
-	{
+	public void setSpeedAngle(Vector setting) {
 		this.setAngle(setting.getAngle());
 		this.setSpeed(setting.getValue());
 	}
 	
-	public String toString()
-	{
-		if (name.equals("")){return "Swerve Module at: " + spinController.toString() + " " + driveController.toString();}
-		else {return "Swerve Module named: " + name;}
+	public String toString() {
+		if (name.equals("")) {
+			return "Swerve Module at: " + spinController.toString() + " " + driveController.toString();
+		} else {
+			return "Swerve Module named: " + name;
+		}
 	}
 
 }

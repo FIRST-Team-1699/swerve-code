@@ -13,21 +13,19 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class SwerveUpdateThread extends Thread {
 
 	// Initializers
-	SwerveModule module1;
-	SwerveModule module2;
-	SwerveModule module3;
-	SwerveModule module4;
+	priavte SwerveModule module1;
+	priavte SwerveModule module2;
+	priavte SwerveModule module3;
+	priavte SwerveModule module4;
 	
-	Thread thread;
+	private Thread thread;
 	
-	long iterator;
+	//priavte long iterator; // I don't think this is required anymore
 	
-	DriverStation ds = DriverStation.getInstance();
-	
+	priavte DriverStation ds = DriverStation.getInstance();
 	
 	// Constructor
-	public SwerveUpdateThread(SwerveModule _module1, SwerveModule _module2, SwerveModule _module3, SwerveModule _module4)
-	{
+	public SwerveUpdateThread(SwerveModule _module1, SwerveModule _module2, SwerveModule _module3, SwerveModule _module4) {
 		this.module1 = _module1;
 		this.module2 = _module2;
 		this.module3 = _module3;
@@ -37,23 +35,20 @@ public class SwerveUpdateThread extends Thread {
 	
 	
 	// Thread methods
-	public void start()
-	{
+	public void start() {
 		// A start-up debugging check
 		System.out.println("|--------------------------------------------------------|");
 		System.out.println("| Team 1699 SwerveUpdateThread Starting                  |");
 		System.out.println("|--------------------------------------------------------|");
 		
 		// Thread this object
-		if (thread == null)
-		{
+		if (thread == null) {
 			this.thread = new Thread(this, "SwerveUpdateThread");
 			thread.start();
 		}
 	}
 	
-	public void run()
-	{
+	public void run() {
 		// Right now, this updates all the modules in one order. This should be tested, to make sure one module does not "lead" the others
 		while (ds.isEnabled())
 		{
@@ -70,10 +65,13 @@ public class SwerveUpdateThread extends Thread {
 			module4.updateDrivePID();
 			
 			// Sleepy time
-			try {Thread.sleep(50);} // again, this value should be adjusted so that that the robot isn't trying to update PID 1000s of times per second
-			catch (InterruptedException e) {e.printStackTrace();}
+			try {
+				Thread.sleep(50); // again, this value should be adjusted so that that the robot isn't trying to update PID 1000s of times per second
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			
-			iterator += 1;
+			//iterator += 1;
 		}
 	}
 	
