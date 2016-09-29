@@ -1,6 +1,11 @@
+/**
+ * A class containing some math-based utilities.
+ * 
+ * @author squirlemaster42, FIRST Team 1699
+ */
 package org.usfirst.frc.team1699.utils;
 
-public class Math{
+public class Math {
 	
 	public double joystickMagnitude(double x, double y){
 		//Write method to take x and y produced by xbox joystick and transform it into a single value that is the magnitude of the joystick.

@@ -1,4 +1,4 @@
-/*
+/**
  * FIRST Team 1699
  * 
  * Robot.java
@@ -13,8 +13,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TalonSRX;
 
-public class Robot extends IterativeRobot {
+import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
+import org.usfirst.frc.team1699.robot.swerve.SwerveModule;
+
+public class Robot extends IterativeRobot { // should this be Command based?
 	
+	// should these be private?
 	TalonSRX mod1Spin;
 	TalonSRX mod1Drive;
 	
@@ -28,6 +32,13 @@ public class Robot extends IterativeRobot {
 	TalonSRX mod4Drive;
 	
 	Joystick xboxDrive;
+	
+	SwerveModule frontLeft;
+	SwerveModule frontRight;
+	SwerveModule backLeft;
+	SwerveModule backRight;
+	
+	SwerveDrive drive;
 	
     public void robotInit() {
     	mod1Spin = new TalonSRX(Constants.MOD1SPIN);
@@ -43,6 +54,7 @@ public class Robot extends IterativeRobot {
     	mod1Drive = new TalonSRX(Constants.MOD4DRIVE);
     	
     	xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
+    	
     }
     
     public void autonomousInit() {
