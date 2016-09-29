@@ -4,7 +4,7 @@
  * Robot.java
  * 
  * @author thatging3rkid, FIRST Team 1699
- * @author 
+ * @author squirlemaster42, FIRST Team 1699
  *
  */
 package org.usfirst.frc.team1699.robot;
