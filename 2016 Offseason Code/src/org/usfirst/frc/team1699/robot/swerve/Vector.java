@@ -51,7 +51,7 @@ public class Vector
 	}
 	
 	// Returns the resultant of two vectors
-	static public Vector getResultantVector(Vector v1, Vector v2){
+	public static Vector getResultantVector(Vector v1, Vector v2){
 		Vector resultant = new Vector(0, 0);
 		
 		double v1x = v1.getValue() * Math.cos(Math.toRadians(v1.getAngle()));
