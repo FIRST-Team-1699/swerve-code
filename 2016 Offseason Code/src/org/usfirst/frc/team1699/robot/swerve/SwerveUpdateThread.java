@@ -4,13 +4,14 @@
  * This class updates all the PIDLoops and does it as a thread, instead of on the main robot thread.
  * 
  * @author thatging3rkid, FIRST Team 1699
+ *
+ * @see http://www.tutorialspoint.com/java/java_multithreading.htm
  * 
  */
 package org.usfirst.frc.team1699.robot.swerve;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
-//May need to be changed to implements runnable, Should be if we do not want to write our own implementation of run.
 public class SwerveUpdateThread extends Thread {
 
 	// Initializers
@@ -20,8 +21,6 @@ public class SwerveUpdateThread extends Thread {
 	private SwerveModule module4;
 	
 	private Thread thread;
-	
-	//priavte long iterator; // I don't think this is required anymore
 	
 	private DriverStation ds = DriverStation.getInstance();
 	
@@ -48,28 +47,37 @@ public class SwerveUpdateThread extends Thread {
 	}
 	
 	public void run() {
-		// Right now, this updates all the modules in one order. This should be tested, to make sure one module does not "lead" the others
-		while (ds.isEnabled()){
-			module1.updateSpinPID();
-			module1.updateDrivePID();
-		
-			module2.updateSpinPID();
-			module2.updateDrivePID();
-		
-			module3.updateSpinPID();
-			module3.updateDrivePID();
-		
-			module4.updateSpinPID();
-			module4.updateDrivePID();
+		// This infinite while loop keeps the thread from dying. It might need to be changed so that the run() method is called when the robot is enabled.
+		while (True) {
 			
-			// Sleepy time
+			// Right now, this updates all the modules in one order. This should be tested, to make sure one module does not "lead" the others
+			while (ds.isEnabled()) {
+				module1.updateSpinPID();
+				module1.updateDrivePID();
+			
+				module2.updateSpinPID();
+				module2.updateDrivePID();
+		
+				module3.updateSpinPID();
+				module3.updateDrivePID();
+		
+				module4.updateSpinPID();
+				module4.updateDrivePID();
+			
+				// Sleepy time
+				try {
+					Thread.sleep(50); // again, this value should be adjusted so that that the robot isn't trying to update PID 1000s of times per second
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+			}
+				
+			// To keep the thread from checking if the robot is enabled 1000s of times per second
 			try {
-				Thread.sleep(50); // again, this value should be adjusted so that that the robot isn't trying to update PID 1000s of times per second
+				Thread.sleep(100); 
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
-			//iterator += 1;
 		}
 	}
 }
