@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1699.Utils;
+package org.usfirst.frc.team1699.utils;
 
 public class Math{
 	

@@ -1,4 +1,4 @@
-/*
+/**
  * FIRST Team 1699
  * 
  * This class updates all the PIDLoops and does it as a thread, instead of on the main robot thread.
@@ -48,7 +48,7 @@ public class SwerveUpdateThread extends Thread {
 	
 	public void run() {
 		// This infinite while loop keeps the thread from dying. It might need to be changed so that the run() method is called when the robot is enabled.
-		while (True) {
+		while (true) {
 			
 			// Right now, this updates all the modules in one order. This should be tested, to make sure one module does not "lead" the others
 			while (ds.isEnabled()) {
@@ -69,8 +69,9 @@ public class SwerveUpdateThread extends Thread {
 					Thread.sleep(50); // again, this value should be adjusted so that that the robot isn't trying to update PID 1000s of times per second
 				} catch (InterruptedException e) {
 					e.printStackTrace();
+				}
 			}
-				
+			
 			// To keep the thread from checking if the robot is enabled 1000s of times per second
 			try {
 				Thread.sleep(100); 

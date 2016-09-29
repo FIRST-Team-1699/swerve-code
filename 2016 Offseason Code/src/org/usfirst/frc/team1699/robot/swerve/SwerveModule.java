@@ -1,4 +1,4 @@
-/*
+/**
  * FIRST Team 1699
  * 
  * This class represents a Swerve module and all associated functions.

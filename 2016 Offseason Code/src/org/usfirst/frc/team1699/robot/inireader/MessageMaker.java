@@ -1,4 +1,4 @@
-/*
+/**
  * FIRST Team 1699
  * 
  * @author thatging3rkid, FIRST Team 1699
@@ -7,7 +7,6 @@
  * 
  * A full rewrite is coming...
  */
-
 package org.usfirst.frc.team1699.robot.inireader;
 
 public class MessageMaker {

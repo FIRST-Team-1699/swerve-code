@@ -1,9 +1,10 @@
-/*
+/**
  * FIRST Team 1699
+ * 
+ * A timer object that actually times.
  * 
  * @author thatging3rkid, FIRST Team 1699
  * 
- * A timer object that actually times.
  */
 package org.usfirst.frc.team1699.robot.pid;
 
@@ -24,15 +25,16 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer
 	// Methods
 	public void start(){
 		if (this.startTime == null) {
-			System.out.println("User tried to start a started timer.");
+			System.err.println("User tried to start a started timer.");
+		} else {
+			this.startTime = super.getFPGATimestamp();
 		}
-		else {this.startTime = super.getFPGATimestamp();}
 	}
 
 	public void stop(){
 		if (this.endTime == null) {
-			System.out.println("User tried to end a finished timer.");
-		}else {
+			System.err.println("User tried to end a finished timer.");
+		} else {
 			this.endTime = super.getFPGATimestamp();
 		}
 		
@@ -45,7 +47,9 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer
 	}
 	
 	public double getElapsed(){
-		if ((startTime == null) || (endTime == null)) {throw new NullPointerException("Bad startTime or endTime in BetterTimer");}
+		if ((startTime == null) || (endTime == null)) {
+			throw new NullPointerException("Bad startTime or endTime in BetterTimer");
+		}
 		return this.timePassed;
 	}
 

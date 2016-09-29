@@ -1,4 +1,4 @@
-/*
+/**
  * FIRST Team 1699
  * 
  * This class stores a vector quantity, instead of a scalar.
