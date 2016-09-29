@@ -10,6 +10,7 @@ package org.usfirst.frc.team1699.robot.swerve;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
+//May need to be changed to implements runnable
 public class SwerveUpdateThread extends Thread {
 
 	// Initializers
