@@ -1,4 +1,12 @@
-
+/*
+ * FIRST Team 1699
+ * 
+ * Robot.java
+ * 
+ * @author thatging3rkid, FIRST Team 1699
+ * @author 
+ *
+ */
 package org.usfirst.frc.team1699.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
