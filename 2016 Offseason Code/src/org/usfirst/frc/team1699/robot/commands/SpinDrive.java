@@ -3,7 +3,6 @@ package org.usfirst.frc.team1699.robot.commands;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -33,9 +32,7 @@ public class SpinDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	int amount = 0;
-    	
-    	swerveDrive.RotateDrive(amount);
+    	swerveDrive.RotateDrive(stick.getRawAxis(3));
     }
 
     // Make this return true when this Command no longer needs to run execute()

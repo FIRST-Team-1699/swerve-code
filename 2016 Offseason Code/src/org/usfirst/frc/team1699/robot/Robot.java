@@ -39,7 +39,9 @@ public class Robot extends IterativeRobot { // should this be Command based?
 	SwerveModule backLeft;
 	SwerveModule backRight;
 	
-	SwerveDrive drive;
+	SwerveDrive swerveDrive = new SwerveDrive(backLeft, backLeft, backLeft, backLeft, 0, 0);
+	
+	CrabDrive crab;
 	
     public void robotInit() {
     	mod1Spin = new TalonSRX(Constants.MOD1SPIN);
@@ -56,7 +58,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
-    	CrabDrive crab = new CrabDrive(mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, xboxDrive);
+    	crab = new CrabDrive(swerveDrive, xboxDrive);
     }
     
     public void autonomousInit() {
@@ -72,6 +74,6 @@ public class Robot extends IterativeRobot { // should this be Command based?
     }
     
     public void teleopPeriodic() {
-    	
+    	//crab.execute();
     }
 }
