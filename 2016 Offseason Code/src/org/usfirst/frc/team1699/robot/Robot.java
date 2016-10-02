@@ -9,12 +9,13 @@
  */
 package org.usfirst.frc.team1699.robot;
 
+import org.usfirst.frc.team1699.robot.commands.CrabDrive;
+import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
+import org.usfirst.frc.team1699.robot.swerve.SwerveModule;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TalonSRX;
-
-import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
-import org.usfirst.frc.team1699.robot.swerve.SwerveModule;
 
 public class Robot extends IterativeRobot { // should this be Command based?
 	
@@ -55,6 +56,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
+    	CrabDrive crab = new CrabDrive(mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, mod1Drive, xboxDrive);
     }
     
     public void autonomousInit() {
