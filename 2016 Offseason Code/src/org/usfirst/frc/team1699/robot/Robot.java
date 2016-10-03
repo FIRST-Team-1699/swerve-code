@@ -39,26 +39,33 @@ public class Robot extends IterativeRobot { // should this be Command based?
 	SwerveModule backLeft;
 	SwerveModule backRight;
 	
-	SwerveDrive swerveDrive = new SwerveDrive(backLeft, backLeft, backLeft, backLeft, 0, 0);
+	SwerveDrive swerveDrive;
 	
 	CrabDrive crab;
 	
     public void robotInit() {
-    	mod1Spin = new TalonSRX(Constants.MOD1SPIN);
-    	mod1Drive = new TalonSRX(Constants.MOD1DRIVE);
+    	this.mod1Spin = new TalonSRX(Constants.MOD1SPIN);
+    	this.mod1Drive = new TalonSRX(Constants.MOD1DRIVE);
     	
-    	mod1Spin = new TalonSRX(Constants.MOD2SPIN);
-    	mod1Drive = new TalonSRX(Constants.MOD2DRIVE);
+    	this.mod2Spin = new TalonSRX(Constants.MOD2SPIN);
+    	this.mod2Drive = new TalonSRX(Constants.MOD2DRIVE);
     	
-    	mod1Spin = new TalonSRX(Constants.MOD3SPIN);
-    	mod1Drive = new TalonSRX(Constants.MOD3DRIVE);
+    	this.mod3Spin = new TalonSRX(Constants.MOD3SPIN);
+    	this.mod3Drive = new TalonSRX(Constants.MOD3DRIVE);
     	
-    	mod1Spin = new TalonSRX(Constants.MOD4SPIN);
-    	mod1Drive = new TalonSRX(Constants.MOD4DRIVE);
+    	this.mod4Spin = new TalonSRX(Constants.MOD4SPIN);
+    	this.mod4Drive = new TalonSRX(Constants.MOD4DRIVE);
     	
-    	xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
+    	this.xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
-    	crab = new CrabDrive(swerveDrive, xboxDrive);
+    	this.frontLeft = new SwerveModule("frontLeft", mod1Drive, mod1Spin, null, null); //needs completion
+    	this.backLeft = new SwerveModule("backLeft", mod2Drive, mod2Spin, null, null);
+    	this.frontRight = new SwerveModule("frontRight", mod3Drive, mod3Spin, null, null);
+    	this.backRight = new SwerveModule("backRight", mod4Drive, mod4Spin, null, null);
+    	
+    	this.swerveDrive = new SwerveDrive(this.frontLeft, this.backLeft, this.frontRight, this.backRight, 25, 25);
+    	
+    	crab = new CrabDrive(swerveDrive, xboxDrive); 
     }
     
     public void autonomousInit() {

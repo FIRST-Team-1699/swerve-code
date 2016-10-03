@@ -1,3 +1,10 @@
+/**
+ * FIRST Team 1699
+ * 
+ * A command for Crab Drive 
+ * 
+ * @author squirlemaster42, FIRST Team 1699
+ */
 package org.usfirst.frc.team1699.robot.commands;
 
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
@@ -5,9 +12,6 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class CrabDrive extends Command {
 	
 	private SwerveDrive swerveDrive;
@@ -21,8 +25,8 @@ public class CrabDrive extends Command {
     	this.stick = stick;
     	    	
     	//May change in the future
-    	if(!stick.getIsXbox()){
-    		System.out.println("Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+    	if(!stick.getIsXbox()) {
+    		System.err.println("Controller must be an Xbox controller. This will need to be remade or this class will not work.");
     	}
     }
 
