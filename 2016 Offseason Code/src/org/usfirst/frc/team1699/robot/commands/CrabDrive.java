@@ -3,19 +3,17 @@ package org.usfirst.frc.team1699.robot.commands;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *@author squirlemaster42
  */
-public class CrabDrive extends Command {
+public class CrabDrive extends org.usfirst.frc.team1699.command.Command{
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 	
-    public CrabDrive(SwerveDrive swerveDrive, Joystick stick) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public CrabDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
+        super(name, id);
     	
     	this.swerveDrive = swerveDrive;
     	this.stick = stick;
@@ -25,27 +23,20 @@ public class CrabDrive extends Command {
     		System.out.println("Controller must be an Xbox controller. This will need to be remade or this class will not work.");
     	}
     }
+    
+	@Override
+	public void init() {
+		
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	@Override
+	public void run() {
+		swerveDrive.CrabDrive(stick.getX(), stick.getY());		
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	swerveDrive.CrabDrive(stick.getX(), stick.getY());
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	@Override
+	public boolean isFinished() {
+		
+		return false;
+	}
 }

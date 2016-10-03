@@ -21,6 +21,5 @@ public class Constants {
 	
 	static final int XBOXDRIVEPORT = 0;
 	
-	static final int LTXBOX = 0;
-	static final int RTXBOX = 0;
+	public static final int XBOXTRIGGERAXIS = 3;
 }

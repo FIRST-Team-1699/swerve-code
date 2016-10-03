@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
-    	crab = new CrabDrive(swerveDrive, xboxDrive);
+    	crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 0);
     }
     
     public void autonomousInit() {

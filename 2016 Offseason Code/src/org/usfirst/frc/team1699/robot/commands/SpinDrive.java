@@ -1,22 +1,20 @@
 package org.usfirst.frc.team1699.robot.commands;
 
+import org.usfirst.frc.team1699.robot.Constants;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ *@author squirlemaster42 
  */
-public class SpinDrive extends Command {
+public class SpinDrive extends org.usfirst.frc.team1699.command.Command{
 
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 	
-    public SpinDrive(SwerveDrive swerveDrive, Joystick stick) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	
+    public SpinDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
+    	super(name, id);
     	this.swerveDrive = swerveDrive;
 		this.stick = stick;
     	
@@ -26,26 +24,19 @@ public class SpinDrive extends Command {
     	}
     }
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	@Override
+	public void init() {
+		
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	swerveDrive.RotateDrive(stick.getRawAxis(3));
-    }
+	@Override
+	public void run() {
+		swerveDrive.RotateDrive(stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	@Override
+	public boolean isFinished() {
+		
+		return false;
+	}
 }
