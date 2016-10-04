@@ -58,9 +58,6 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	this.xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
-<<<<<<< HEAD
-    	crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 0);
-=======
     	this.frontLeft = new SwerveModule("frontLeft", mod1Drive, mod1Spin, null, null); //needs completion
     	this.backLeft = new SwerveModule("backLeft", mod2Drive, mod2Spin, null, null);
     	this.frontRight = new SwerveModule("frontRight", mod3Drive, mod3Spin, null, null);
@@ -68,8 +65,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	this.swerveDrive = new SwerveDrive(this.frontLeft, this.backLeft, this.frontRight, this.backRight, 25, 25);
     	
-    	crab = new CrabDrive(swerveDrive, xboxDrive); 
->>>>>>> branch 'master' of https://github.com/FIRST-Team-1699/2016-offseason-code.git
+    	crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 1);
     }
     
     public void autonomousInit() {

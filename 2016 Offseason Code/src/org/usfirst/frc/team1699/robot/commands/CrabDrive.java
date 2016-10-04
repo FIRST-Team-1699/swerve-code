@@ -10,9 +10,8 @@ package org.usfirst.frc.team1699.robot.commands;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
+
 public class CrabDrive extends org.usfirst.frc.team1699.command.Command{
-	
-public class CrabDrive extends Command {
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
