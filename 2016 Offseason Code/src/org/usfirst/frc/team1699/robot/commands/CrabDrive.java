@@ -10,15 +10,9 @@ package org.usfirst.frc.team1699.robot.commands;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
-
-<<<<<<< HEAD
-/**
- *@author squirlemaster42
- */
 public class CrabDrive extends org.usfirst.frc.team1699.command.Command{
-=======
+	
 public class CrabDrive extends Command {
->>>>>>> branch 'master' of https://github.com/FIRST-Team-1699/2016-offseason-code.git
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
