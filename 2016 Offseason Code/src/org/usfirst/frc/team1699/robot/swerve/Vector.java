@@ -73,6 +73,7 @@ public class Vector
 	
 	/**
 	 * Returns the resultant of two vectors
+	 * 
 	 * @param v1 - Vector 1
 	 * @param v2 - Vector 2
 	 * @return the vector addition of v1 and v2
@@ -96,8 +97,38 @@ public class Vector
 		return resultant;
 	}
 	
+	/**
+	 * toString() method
+	 * 
+	 * @return a String representing the vector
+	 */
+	@Override
 	public String toString()
 	{
 		return "" + value + " at " + angle + "°";
+	}
+	
+	/**
+	 * Generates a hash code for the Vector
+	 * 
+	 * @return a hash code
+	 */
+	@Override
+	public int hashCode() {
+		return Integer.parseInt("" + ((Double) value).hashCode() + ((Double) angle).hashCode());
+	}
+	
+	/**
+	 * Tells if two objects are equal
+	 * 
+	 * @param o - an Object to compare to
+	 * @return true if the objects have the same angle and value
+	 */
+	@Override
+	public boolean equals(Object o) {
+		if (o instanceof Vector) {
+			return (angle == ((Vector) o).getAngle()) && (value == ((Vector) o).getValue());
+		}
+		return false;
 	}
 }
