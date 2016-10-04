@@ -11,7 +11,9 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class CrabDrive extends org.usfirst.frc.team1699.command.Command{
+public class CrabDrive extends org.usfirst.frc.team1699.robot.command.Command{
+	
+	//Needs to string
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
@@ -37,10 +39,18 @@ public class CrabDrive extends org.usfirst.frc.team1699.command.Command{
 	public void run() {
 		swerveDrive.CrabDrive(stick.getX(), stick.getY());		
 	}
+	
+	@Override
+	public void zeroAllSensors() {
+		
+	}
 
 	@Override
 	public boolean isFinished() {
 		
 		return false;
 	}
+
 }
+
+	

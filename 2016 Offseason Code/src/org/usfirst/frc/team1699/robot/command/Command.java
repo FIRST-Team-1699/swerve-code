@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1699.command;
+package org.usfirst.frc.team1699.robot.command;
 
 public abstract class Command {
 	
@@ -13,6 +13,7 @@ public abstract class Command {
 	
 	public abstract void init();
 	public abstract void run();
+	public abstract void zeroAllSensors(); //zeroAllSensors may need to be looked at and changed
 	public abstract boolean isFinished();
 	
 	public String getName(){

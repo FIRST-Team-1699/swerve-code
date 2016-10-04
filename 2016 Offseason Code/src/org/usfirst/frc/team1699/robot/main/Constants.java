@@ -3,7 +3,7 @@
  * 
  * @author squirlemaster42, FIRST Team 1699
  */
-package org.usfirst.frc.team1699.robot;
+package org.usfirst.frc.team1699.robot.main;
 
 public class Constants {
 	

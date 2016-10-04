@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1699.robot.commands;
 
-import org.usfirst.frc.team1699.robot.Constants;
+import org.usfirst.frc.team1699.robot.main.Constants;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
 /**
  *
  */
-public class UnicornDrive extends org.usfirst.frc.team1699.command.Command {
+public class UnicornDrive extends org.usfirst.frc.team1699.robot.command.Command {
 
+	//Needs to string
+	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 	
@@ -34,8 +36,14 @@ public class UnicornDrive extends org.usfirst.frc.team1699.command.Command {
 	public void run() {
 		swerveDrive.UnicornDrive(stick.getX(), stick.getY(), stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
 	}
+
+	@Override
+	public void zeroAllSensors() {
+		
+	}
 	
-	 public boolean isFinished() {
+	@Override
+	public boolean isFinished() {
     	
         return false;
     }

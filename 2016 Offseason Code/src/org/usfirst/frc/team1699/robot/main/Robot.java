@@ -7,9 +7,11 @@
  * @author squirlemaster42, FIRST Team 1699
  *
  */
-package org.usfirst.frc.team1699.robot;
+package org.usfirst.frc.team1699.robot.main;
 
 import org.usfirst.frc.team1699.robot.commands.CrabDrive;
+import org.usfirst.frc.team1699.robot.commands.SpinDrive;
+import org.usfirst.frc.team1699.robot.commands.UnicornDrive;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 import org.usfirst.frc.team1699.robot.swerve.SwerveModule;
 
@@ -42,6 +44,8 @@ public class Robot extends IterativeRobot { // should this be Command based?
 	SwerveDrive swerveDrive;
 	
 	CrabDrive crab;
+	SpinDrive spin;
+	UnicornDrive unicorn;
 	
     public void robotInit() {
     	this.mod1Spin = new TalonSRX(Constants.MOD1SPIN);
@@ -58,14 +62,16 @@ public class Robot extends IterativeRobot { // should this be Command based?
     	
     	this.xboxDrive = new Joystick(Constants.XBOXDRIVEPORT);
     	
-    	this.frontLeft = new SwerveModule("frontLeft", mod1Drive, mod1Spin, null, null); //needs completion
+    	this.frontLeft = new SwerveModule("frontLeft", mod1Drive, mod1Spin, null, null); //needs completion0
     	this.backLeft = new SwerveModule("backLeft", mod2Drive, mod2Spin, null, null);
     	this.frontRight = new SwerveModule("frontRight", mod3Drive, mod3Spin, null, null);
     	this.backRight = new SwerveModule("backRight", mod4Drive, mod4Spin, null, null);
     	
     	this.swerveDrive = new SwerveDrive(this.frontLeft, this.backLeft, this.frontRight, this.backRight, 25, 25);
     	
-    	crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 1);
+    	crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 0);
+    	spin = new SpinDrive(swerveDrive, xboxDrive, "spinDrive", 1);
+    	unicorn = new UnicornDrive(swerveDrive, xboxDrive, "unicornDrive", 2);
     }
     
     public void autonomousInit() {

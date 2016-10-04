@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1699.robot.commands;
 
-import org.usfirst.frc.team1699.robot.Constants;
+import org.usfirst.frc.team1699.robot.main.Constants;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -8,8 +8,10 @@ import edu.wpi.first.wpilibj.Joystick;
 /**
  *@author squirlemaster42 
  */
-public class SpinDrive extends org.usfirst.frc.team1699.command.Command{
+public class SpinDrive extends org.usfirst.frc.team1699.robot.command.Command{
 
+	//Needs to string
+	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 	
@@ -33,10 +35,16 @@ public class SpinDrive extends org.usfirst.frc.team1699.command.Command{
 	public void run() {
 		swerveDrive.RotateDrive(stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
 	}
-
+	
+	@Override
+	public void zeroAllSensors() {
+		
+	}
+	
 	@Override
 	public boolean isFinished() {
 		
 		return false;
 	}
+
 }
