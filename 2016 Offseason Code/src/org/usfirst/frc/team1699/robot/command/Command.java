@@ -23,4 +23,9 @@ public abstract class Command {
 	public int getId(){
 		return id;
 	}
+
+	@Override
+	public String toString() {
+		return "Command [name=" + name + ", id=" + id + "]";
+	}
 }
