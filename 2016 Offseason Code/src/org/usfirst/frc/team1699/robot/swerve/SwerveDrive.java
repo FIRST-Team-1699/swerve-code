@@ -4,6 +4,7 @@
  * This class is the RobotDrive for Swerve robots.
  * 
  * @author thatging3rkid, FIRST Team 1699
+ * @author squirlemaster42, FIRST Team 1699
  * 
  * @version v0.2-norobot
  */
@@ -11,9 +12,7 @@ package org.usfirst.frc.team1699.robot.swerve;
 
 import java.util.ArrayList;
 
-import edu.wpi.first.wpilibj.RobotDrive;
-
-public class SwerveDrive extends RobotDrive {
+public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 
   // Initializers
   private SwerveModule frontLeft;
@@ -127,8 +126,7 @@ public class SwerveDrive extends RobotDrive {
   }
 
   /**
-   * Turns all the modules to a certain degree (45 deg for a square frame), then spins the robot on
-   * a central point
+   * Turns all the modules to a certain degree that then allows the robot on spin a central point
    * 
    * @param amount - amount of power to spin the wheels
    */
@@ -181,7 +179,6 @@ public class SwerveDrive extends RobotDrive {
    * 
    * @see http://www.applepirobotics.org/wp-content/uploads/2013/11, Drive Trains part 3, slide 8
    * 
-   * 
    * @param xStick - x value
    * @param yStick - y value
    * @param rotateStick - amount of rotate
@@ -196,8 +193,12 @@ public class SwerveDrive extends RobotDrive {
     backRight.setSpeedAngle(Vector.getResultantVector(crabVectors.get(3), rotateVectors.get(3)));
   }
 
-  // Tank Drive method
-  // Someone wanted it...
+  /**
+   * Tank drive for swerve, who would want this?
+   * 
+   * @param leftValue - left stick value
+   * @param rightValue - right stick value
+   */
   @Override
   public void tankDrive(double leftValue, double rightValue) {
     this.frontLeft.setAngle(0);
