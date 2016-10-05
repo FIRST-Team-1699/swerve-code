@@ -1,3 +1,5 @@
+# todo.md
+
 1. Finish code and get ready to test.
  - 10/10 would todo again
  
@@ -10,3 +12,7 @@
 3. Update all formatting and syntax to Google Style
 
 4. Add drive base command -- talk to Jakob about what it should include
+
+### When testing: 
+1. If Robot.java is not found, it needs to be moved up a directory and [6746c70](https://github.com/FIRST-Team-1699/2016-offseason-code/commit/6746c70e8035c67caea27f189c6aaa782f46231f) needs to be undone.
+2. Know that the code thinks linearly (360 degrees is different than 0 degrees), and operating near 0 degrees *may* have some unexpected consequences.
