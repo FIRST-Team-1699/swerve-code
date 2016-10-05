@@ -12,7 +12,9 @@
 3. Update all formatting and syntax to Google Style
 
 4. Add drive base command -- talk to Jakob about what it should include
-5. Add more witty comments
+
+5. Add more witty comments 
+
 6. Fix swerve update thread class -- talk to Jakob and look at Discord
 
 ### When testing: 
