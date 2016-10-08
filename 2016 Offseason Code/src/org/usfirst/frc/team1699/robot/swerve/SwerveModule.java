@@ -20,6 +20,7 @@ public class SwerveModule {
 
   private SpeedController spinController;
   private SpeedController driveController;
+  
   private boolean reverseSpin;
   private boolean reverseDrive;
 

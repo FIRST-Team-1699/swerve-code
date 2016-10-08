@@ -37,8 +37,8 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
    * @param _backLeft - reference to the back left module
    * @param _frontRight - reference to the front right module
    * @param _backRight - reference to the back left module
-   * @param _length - frame length or distance between wheels in the "front"
-   * @param _width - frame width or distance between wheels on a "side"
+   * @param _length - frame length or distance between wheels in the "front" in inches
+   * @param _width - frame width or distance between wheels on a "side" in inches
    */
   public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight,
       SwerveModule _backRight, double _length, double _width) {
@@ -52,19 +52,46 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
     if ((_length == 0) || ((Double) _length == null)) {
       throw new IllegalArgumentException("Length was 0 or null.");
     }
-
+    
     this.frontLeft = _frontLeft;
     this.backLeft = _backLeft;
     this.frontRight = _frontRight;
     this.backRight = _backRight;
     this.frameLength = Math.abs(_length);
     this.frameWidth = Math.abs(_width);
+    // If you really understand the math, you'll know that length and width can be in whatever unit 
     this.rotateAngle = Math.toDegrees(Math.atan(frameLength / frameWidth));
 
-    new SwerveUpdateThread(this.frontLeft, this.backLeft, this.frontRight, this.backRight).start();
+    // Check for null SwerveModules. Would be bad if they were null...
+    if (this.frontLeft == null) {
+      throw new IllegalArgumentException("frontLeft is null");
+    }
+    
+    if (this.backLeft == null) {
+      throw new IllegalArgumentException("backLeft is null");
+    }
+    
+    if (this.frontRight == null) {
+      throw new IllegalArgumentException("frontRight is null");
+    }
+    
+    if (this.backRight == null) {
+      throw new IllegalArgumentException("backRight is null");
+    }
+    
+    // Create an ArrayList of SwerveModules
+    ArrayList<SwerveModule> modules = new ArrayList<>();
+    // Add the modules one by one
+    modules.add(this.frontLeft);
+    modules.add(this.backLeft);
+    modules.add(this.frontRight);
+    modules.add(this.backRight);
+    // Construct the update service
+    SwerveUpdateService service = new SwerveUpdateService(modules);
+    // Start the service
+    service.updateModules();
   }
 
-  // Methods
   /**
    * A drive method that aligns the modules and drives in any direction
    * 

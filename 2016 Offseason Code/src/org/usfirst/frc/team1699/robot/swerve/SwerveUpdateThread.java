@@ -4,6 +4,7 @@
  * This class updates all the PIDLoops and does it as a thread, instead of on the main robot thread.
  * 
  * @author thatging3rkid, FIRST Team 1699
+ * @author squirlemaster42, FIRST Team 1699
  *
  * @see http://www.tutorialspoint.com/java/java_multithreading.htm
  * 
@@ -12,6 +13,7 @@ package org.usfirst.frc.team1699.robot.swerve;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
+@Deprecated 
 public class SwerveUpdateThread extends Thread {
 
   // Initializers
