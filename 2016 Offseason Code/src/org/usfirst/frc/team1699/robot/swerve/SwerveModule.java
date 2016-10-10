@@ -92,11 +92,11 @@ public class SwerveModule {
   }
 
   public void reverseSpinMotor() {
-    reverseSpin = !reverseSpin;
+    this.reverseSpin = !this.reverseSpin;
   }
 
   public void reverseDriveMotor() {
-    reverseDrive = !reverseDrive;
+    this.reverseDrive = !this.reverseDrive;
   }
 
   public void setReverseSpin(boolean _spin) {
@@ -108,41 +108,76 @@ public class SwerveModule {
   }
 
 
-  // Methods
+  /**
+   * Updates the Drive and Spin PID loops
+   */
   protected void updatePID() {
     this.updateSpinPID();
     this.updateDrivePID();
   }
-
+  
+  /**
+   * Updates only the Spin PID loop
+   */
   protected void updateSpinPID() {
     spinController.set(spinLoop.getPIDValue());
   }
 
+  /**
+   * Updates only the Drive PID loop
+   */
   protected void updateDrivePID() {
     driveController.set(driveLoop.getIntegratedPIDValue());
   }
 
+  /**
+   * Sets the desired angle
+   * 
+   * @param _goal - the new desired angle
+   */
   public void setAngle(double _goal) {
     if (reverseSpin == true) {
-      spinLoop.setGoal(-1 * _goal); // don't know if this will work
+      spinLoop.setGoal(360 - _goal); // don't know if this will work
     } else if (reverseSpin == false) {
       spinLoop.setGoal(_goal);
     }
   }
 
+  /**
+   * Sets the desired speed
+   * 
+   * @param _speed - the new desired speed
+   */
   public void setSpeed(double _speed) {
-    if (reverseDrive == true) {
+	  if (_speed > 1.0) {
+		  System.err.println("Input speed is too high!");
+		  _speed = 1.0;
+	  }
+	  if (_speed < -1.0) {
+		  System.err.println("Input speed is too low!");
+		  _speed = -1.0;
+	  }
+	  if (reverseDrive == true) {
       driveLoop.setGoal(-1 * _speed);
     } else if (reverseDrive == false) {
       driveLoop.setGoal(_speed);
     }
   }
 
+  /**
+   * Uses a Vector to set the speed and angle
+   * 
+   * @param setting - a Vector that you want this module to emulate
+   */
   public void setSpeedAngle(Vector setting) {
     this.setAngle(setting.getAngle());
     this.setSpeed(setting.getValue());
   }
 
+  /**
+   * A toString, mostly for debugging reasons
+   */
+  @Override
   public String toString() {
     if (name.equals("")) {
       return "Swerve Module at: " + spinController.toString() + " " + driveController.toString();
