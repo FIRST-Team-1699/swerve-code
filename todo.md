@@ -15,7 +15,7 @@
 
 5. Add more witty comments 
 
-6. Fix swerve update thread class -- talk to Jakob and look at Discord
+6. Fix swerve update thread class -- Should be done (needs to be tested in simulation before being used on robot)
 
 ### When testing: 
 1. If Robot.java is not found, it needs to be moved up a directory and [6746c70](https://github.com/FIRST-Team-1699/2016-offseason-code/commit/6746c70e8035c67caea27f189c6aaa782f46231f) needs to be undone.
