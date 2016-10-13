@@ -17,6 +17,8 @@
 
 6. Fix swerve update thread class -- Should be done (needs to be tested in simulation before being used on robot)
 
+7. Move dead zone constants to Constants class
+
 ### When testing: 
 1. If Robot.java is not found, it needs to be moved up a directory and [6746c70](https://github.com/FIRST-Team-1699/2016-offseason-code/commit/6746c70e8035c67caea27f189c6aaa782f46231f) needs to be undone.
 2. Know that the code thinks linearly (360 degrees is different than 0 degrees), and operating near 0 degrees *may* have some unexpected consequences.
