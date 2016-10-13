@@ -10,6 +10,7 @@
 package org.usfirst.frc.team1699.robot.main;
 
 import org.usfirst.frc.team1699.robot.commands.CrabDrive;
+import org.usfirst.frc.team1699.robot.commands.DriveBase;
 import org.usfirst.frc.team1699.robot.commands.SpinDrive;
 import org.usfirst.frc.team1699.robot.commands.UnicornDrive;
 import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
@@ -46,6 +47,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
   CrabDrive crab;
   SpinDrive spin;
   UnicornDrive unicorn;
+  DriveBase drive;
 
   public void robotInit() {
     this.mod1Spin = new TalonSRX(Constants.MOD1SPIN);
@@ -71,9 +73,10 @@ public class Robot extends IterativeRobot { // should this be Command based?
     this.swerveDrive =
         new SwerveDrive(this.frontLeft, this.backLeft, this.frontRight, this.backRight, 25, 25);
 
-    crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 0);
-    spin = new SpinDrive(swerveDrive, xboxDrive, "spinDrive", 1);
-    unicorn = new UnicornDrive(swerveDrive, xboxDrive, "unicornDrive", 2);
+    crab = new CrabDrive(swerveDrive, xboxDrive, "crabDrive", 1);
+    spin = new SpinDrive(swerveDrive, xboxDrive, "spinDrive", 2);
+    unicorn = new UnicornDrive(swerveDrive, xboxDrive, "unicornDrive", 3);
+    drive = new DriveBase(crab, spin, unicorn, "driveBase", 0);
   }
 
   public void autonomousInit() {
@@ -85,7 +88,7 @@ public class Robot extends IterativeRobot { // should this be Command based?
   }
 
   public void teleopInit() {
-
+    drive.run();
   }
 
   public void teleopPeriodic() {

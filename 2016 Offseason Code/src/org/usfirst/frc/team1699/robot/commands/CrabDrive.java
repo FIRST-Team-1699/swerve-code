@@ -26,8 +26,7 @@ public class CrabDrive extends org.usfirst.frc.team1699.robot.command.Command {
 
     // May change in the future
     if (!stick.getIsXbox()) {
-      System.err.println(
-          "Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+      System.err.println("Controller must be an Xbox controller. This will need to be remade or this class will not work.");
     }
   }
 

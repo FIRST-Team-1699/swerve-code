@@ -54,6 +54,7 @@ public class SwerveUpdateService {
     ArrayList<SwerveModule> singleModule = new ArrayList<>();
     singleModule.add(module);
     final SwerveUpdateRunnable run = new SwerveUpdateRunnable(this.ds, singleModule);
+    @SuppressWarnings("unused")
     final ScheduledFuture<?> future = scheduler.schedule(run, 0, TimeUnit.MILLISECONDS);
   }
   
@@ -63,6 +64,7 @@ public class SwerveUpdateService {
   public void updateModules() {
     final SwerveUpdateRunnable run = new SwerveUpdateRunnable(this.ds, this.modules);
     // scheduler.scheduleWithFixedDelay(reference to Runnable class, initial delay, time between executions, unit);
+    @SuppressWarnings("unused")
     final ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(run, 100, 100, TimeUnit.MILLISECONDS);
   }
 
