@@ -20,34 +20,33 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TalonSRX;
 
-public class Robot extends IterativeRobot { // should this be Command based?
+public class Robot extends IterativeRobot {
 
-  // should these be private?
-  TalonSRX mod1Spin;
-  TalonSRX mod1Drive;
+  private TalonSRX mod1Spin;
+  private TalonSRX mod1Drive;
 
-  TalonSRX mod2Spin;
-  TalonSRX mod2Drive;
+  private TalonSRX mod2Spin;
+  private TalonSRX mod2Drive;
 
-  TalonSRX mod3Spin;
-  TalonSRX mod3Drive;
+  private TalonSRX mod3Spin;
+  private TalonSRX mod3Drive;
 
-  TalonSRX mod4Spin;
-  TalonSRX mod4Drive;
+  private TalonSRX mod4Spin;
+  private  TalonSRX mod4Drive;
 
-  Joystick xboxDrive;
+  private Joystick xboxDrive;
 
-  SwerveModule frontLeft;
-  SwerveModule frontRight;
-  SwerveModule backLeft;
-  SwerveModule backRight;
+  private SwerveModule frontLeft;
+  private SwerveModule frontRight;
+  private SwerveModule backLeft;
+  private SwerveModule backRight;
 
-  SwerveDrive swerveDrive;
+  private SwerveDrive swerveDrive;
 
-  CrabDrive crab;
-  SpinDrive spin;
-  UnicornDrive unicorn;
-  DriveBase drive;
+  private CrabDrive crab;
+  private SpinDrive spin;
+  private UnicornDrive unicorn;
+  private DriveBase drive;
 
   public void robotInit() {
     this.mod1Spin = new TalonSRX(Constants.MOD1SPIN);
