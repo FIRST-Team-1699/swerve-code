@@ -15,7 +15,7 @@
 
 5. Add more witty comments 
 
-6. Fix swerve update thread class~ -- Should be done (needs to be tested in simulation before being used on robot)
+6. ~~Fix swerve update thread class~~ -- Should be done (needs to be tested in simulation before being used on robot)
 
 7. Move dead zone constants to Constants class
 
