@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.Joystick;
 public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
 	// Needs to string
-
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 
@@ -50,6 +49,11 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	public boolean isFinished() {
 
 		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "SpinDrive [swerveDrive=" + swerveDrive + ", stick=" + stick + "]";
 	}
 
 }

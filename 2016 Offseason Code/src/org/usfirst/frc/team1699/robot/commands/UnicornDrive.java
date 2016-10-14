@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	
-	// Needs to string
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 
@@ -50,5 +49,10 @@ public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command
 	public boolean isFinished() {
 
 		return false;
+	}
+	
+	@Override
+	public String toString() {
+		return "UnicornDrive [swerveDrive=" + swerveDrive + ", stick=" + stick + "]";
 	}
 }

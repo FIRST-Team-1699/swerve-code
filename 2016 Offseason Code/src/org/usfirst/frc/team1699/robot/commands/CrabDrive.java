@@ -12,8 +12,7 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
-	// Needs to string
-
+	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 
@@ -50,5 +49,9 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
 		return false;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "UnicornDrive [swerveDrive=" + swerveDrive + ", stick=" + stick + "]";
+	}
 }

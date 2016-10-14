@@ -40,4 +40,9 @@ public class DriveBase extends org.usfirst.frc.team1699.utils.command.Command {
 		return false;
 	}
 
+	@Override
+	public String toString() {
+		return "DriveBase [crab=" + crab + ", spin=" + spin + ", unicorn=" + unicorn + "]";
+	}
+	
 }
