@@ -9,13 +9,13 @@
  - Finish all commands
  - Implement all commands
 
-3. Update all formatting and syntax to Google Style
+3. ~~Update all formatting and syntax to Google Style~~
 
 4. Add drive base command -- talk to Jakob about what it should include
 
 5. Add more witty comments 
 
-6. Fix swerve update thread class -- Should be done (needs to be tested in simulation before being used on robot)
+6. ~~Fix swerve update thread class~~ -- Should be done (needs to be tested in simulation before being used on robot)
 
 7. Move dead zone constants to Constants class
 
