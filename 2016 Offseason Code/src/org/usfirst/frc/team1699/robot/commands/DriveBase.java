@@ -15,7 +15,9 @@ public class DriveBase extends org.usfirst.frc.team1699.robot.command.Command{
 
   @Override
   public void init() {
-    
+    crab.init();
+    spin.init();
+    unicorn.init();
   }
 
   @Override

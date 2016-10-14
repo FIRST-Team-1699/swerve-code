@@ -76,6 +76,7 @@ public class Robot extends IterativeRobot {
     spin = new SpinDrive(swerveDrive, xboxDrive, "spinDrive", 2);
     unicorn = new UnicornDrive(swerveDrive, xboxDrive, "unicornDrive", 3);
     drive = new DriveBase(crab, spin, unicorn, "driveBase", 0);
+    drive.init();
   }
 
   public void autonomousInit() {
@@ -83,14 +84,14 @@ public class Robot extends IterativeRobot {
   }
 
   public void autonomousPeriodic() {
-
+    
   }
 
   public void teleopInit() {
-    drive.run();
+    
   }
 
   public void teleopPeriodic() {
-    // crab.execute();
+    drive.run();
   }
 }
