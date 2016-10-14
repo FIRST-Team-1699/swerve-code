@@ -15,175 +15,189 @@ import edu.wpi.first.wpilibj.SpeedController;
 
 public class SwerveModule {
 
-  // Initializers
-  private String name;
+	// Initializers
+	private String name;
 
-  private SpeedController spinController;
-  private SpeedController driveController;
-  
-  private boolean reverseSpin;
-  private boolean reverseDrive;
+	private SpeedController spinController;
+	private SpeedController driveController;
 
-  private Encoder spinEncoder;
-  private Encoder driveEncoder;
+	private boolean reverseSpin;
+	private boolean reverseDrive;
 
-  private PIDLoop spinLoop;
-  private PIDLoop driveLoop;
+	private Encoder spinEncoder;
+	private Encoder driveEncoder;
 
-  // Constructors
-  public SwerveModule(SpeedController _driveController, SpeedController _spinController,
-      Encoder _spinEncoder, Encoder _driveEncoder) {
-    this.name = "";
-    this.spinController = _spinController;
-    this.driveController = _driveController;
-    this.spinEncoder = _spinEncoder;
-    this.driveEncoder = _driveEncoder;
-    spinLoop = new PIDLoop("" + "spin", .1, .1, 0, this.spinEncoder); // generic PID values in here,
-                                                                      // they need to be tuned or
-                                                                      // input
-    driveLoop = new PIDLoop("" + "drive", .1, 0, .1, this.driveEncoder);
-    driveLoop.setUseRate(true);
-  }
+	private PIDLoop spinLoop;
+	private PIDLoop driveLoop;
 
-  public SwerveModule(String _name, SpeedController _driveController,
-      SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) {
-    this.name = _name;
-    this.spinController = _spinController;
-    this.driveController = _driveController;
-    this.spinEncoder = _spinEncoder;
-    this.driveEncoder = _driveEncoder;
-    spinLoop = new PIDLoop(this.name + "spin", .1, .1, 0, this.spinEncoder); // again, needs to be
-                                                                             // tuned
-    driveLoop = new PIDLoop(this.name + "drive", .1, 0, .1, this.driveEncoder);
-    driveLoop.setUseRate(true);
-  }
+	// Constructors
+	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder,
+			Encoder _driveEncoder) {
+		this.name = "";
+		this.spinController = _spinController;
+		this.driveController = _driveController;
+		this.spinEncoder = _spinEncoder;
+		this.driveEncoder = _driveEncoder;
+		spinLoop = new PIDLoop("" + "spin", .1, .1, 0, this.spinEncoder); // generic
+																			// PID
+																			// values
+																			// in
+																			// here,
+																			// they
+																			// need
+																			// to
+																			// be
+																			// tuned
+																			// or
+																			// input
+		driveLoop = new PIDLoop("" + "drive", .1, 0, .1, this.driveEncoder);
+		driveLoop.setUseRate(true);
+	}
 
-  // Getters and Setters
-  public String getName() {
-    return this.name;
-  }
+	public SwerveModule(String _name, SpeedController _driveController, SpeedController _spinController,
+			Encoder _spinEncoder, Encoder _driveEncoder) {
+		this.name = _name;
+		this.spinController = _spinController;
+		this.driveController = _driveController;
+		this.spinEncoder = _spinEncoder;
+		this.driveEncoder = _driveEncoder;
+		spinLoop = new PIDLoop(this.name + "spin", .1, .1, 0, this.spinEncoder); // again,
+																					// needs
+																					// to
+																					// be
+																					// tuned
+		driveLoop = new PIDLoop(this.name + "drive", .1, 0, .1, this.driveEncoder);
+		driveLoop.setUseRate(true);
+	}
 
-  public void setName(String _name) {
-    this.name = _name;
-  }
+	// Getters and Setters
+	public String getName() {
+		return this.name;
+	}
 
-  public SpeedController getSpinController() {
-    return this.spinController;
-  }
+	public void setName(String _name) {
+		this.name = _name;
+	}
 
-  public SpeedController getDriveController() {
-    return this.driveController;
-  }
+	public SpeedController getSpinController() {
+		return this.spinController;
+	}
 
-  public Encoder getDriveEncoder() {
-    return this.driveEncoder;
-  }
+	public SpeedController getDriveController() {
+		return this.driveController;
+	}
 
-  public double getDriveEncoderValue() {
-    return this.driveEncoder.get();
-  }
+	public Encoder getDriveEncoder() {
+		return this.driveEncoder;
+	}
 
-  public boolean getReverseSpin() {
-    return reverseSpin;
-  }
+	public double getDriveEncoderValue() {
+		return this.driveEncoder.get();
+	}
 
-  public boolean getReverseDrive() {
-    return reverseDrive;
-  }
+	public boolean getReverseSpin() {
+		return reverseSpin;
+	}
 
-  public void reverseSpinMotor() {
-    this.reverseSpin = !this.reverseSpin;
-  }
+	public boolean getReverseDrive() {
+		return reverseDrive;
+	}
 
-  public void reverseDriveMotor() {
-    this.reverseDrive = !this.reverseDrive;
-  }
+	public void reverseSpinMotor() {
+		this.reverseSpin = !this.reverseSpin;
+	}
 
-  public void setReverseSpin(boolean _spin) {
-    this.reverseSpin = _spin;
-  }
+	public void reverseDriveMotor() {
+		this.reverseDrive = !this.reverseDrive;
+	}
 
-  public void setReverseDrive(boolean _drive) {
-    this.reverseDrive = _drive;
-  }
+	public void setReverseSpin(boolean _spin) {
+		this.reverseSpin = _spin;
+	}
 
+	public void setReverseDrive(boolean _drive) {
+		this.reverseDrive = _drive;
+	}
 
-  /**
-   * Updates the Drive and Spin PID loops
-   */
-  protected void updatePID() {
-    this.updateSpinPID();
-    this.updateDrivePID();
-  }
-  
-  /**
-   * Updates only the Spin PID loop
-   */
-  protected void updateSpinPID() {
-    spinController.set(spinLoop.getPIDValue());
-  }
+	/**
+	 * Updates the Drive and Spin PID loops
+	 */
+	protected void updatePID() {
+		this.updateSpinPID();
+		this.updateDrivePID();
+	}
 
-  /**
-   * Updates only the Drive PID loop
-   */
-  protected void updateDrivePID() {
-    driveController.set(driveLoop.getIntegratedPIDValue());
-  }
+	/**
+	 * Updates only the Spin PID loop
+	 */
+	protected void updateSpinPID() {
+		spinController.set(spinLoop.getPIDValue());
+	}
 
-  /**
-   * Sets the desired angle
-   * 
-   * @param _goal - the new desired angle
-   */
-  public void setAngle(double _goal) {
-    if (reverseSpin == true) {
-      spinLoop.setGoal(360 - _goal); // don't know if this will work
-    } else if (reverseSpin == false) {
-      spinLoop.setGoal(_goal);
-    }
-  }
+	/**
+	 * Updates only the Drive PID loop
+	 */
+	protected void updateDrivePID() {
+		driveController.set(driveLoop.getIntegratedPIDValue());
+	}
 
-  /**
-   * Sets the desired speed
-   * 
-   * @param _speed - the new desired speed
-   */
-  public void setSpeed(double _speed) {
-	  if (_speed > 1.0) {
-		  System.err.println("Input speed is too high!");
-		  _speed = 1.0;
-	  }
-	  if (_speed < -1.0) {
-		  System.err.println("Input speed is too low!");
-		  _speed = -1.0;
-	  }
-	  if (reverseDrive == true) {
-      driveLoop.setGoal(-1 * _speed);
-    } else if (reverseDrive == false) {
-      driveLoop.setGoal(_speed);
-    }
-  }
+	/**
+	 * Sets the desired angle
+	 * 
+	 * @param _goal
+	 *            - the new desired angle
+	 */
+	public void setAngle(double _goal) {
+		if (reverseSpin == true) {
+			spinLoop.setGoal(360 - _goal); // don't know if this will work
+		} else if (reverseSpin == false) {
+			spinLoop.setGoal(_goal);
+		}
+	}
 
-  /**
-   * Uses a Vector to set the speed and angle
-   * 
-   * @param setting - a Vector that you want this module to emulate
-   */
-  public void setSpeedAngle(Vector setting) {
-    this.setAngle(setting.getAngle());
-    this.setSpeed(setting.getValue());
-  }
+	/**
+	 * Sets the desired speed
+	 * 
+	 * @param _speed
+	 *            - the new desired speed
+	 */
+	public void setSpeed(double _speed) {
+		if (_speed > 1.0) {
+			System.err.println("Input speed is too high!");
+			_speed = 1.0;
+		}
+		if (_speed < -1.0) {
+			System.err.println("Input speed is too low!");
+			_speed = -1.0;
+		}
+		if (reverseDrive == true) {
+			driveLoop.setGoal(-1 * _speed);
+		} else if (reverseDrive == false) {
+			driveLoop.setGoal(_speed);
+		}
+	}
 
-  /**
-   * A toString, mostly for debugging reasons
-   */
-  @Override
-  public String toString() {
-    if (name.equals("")) {
-      return "Swerve Module at: " + spinController.toString() + " " + driveController.toString();
-    } else {
-      return "Swerve Module named: " + name;
-    }
-  }
+	/**
+	 * Uses a Vector to set the speed and angle
+	 * 
+	 * @param setting
+	 *            - a Vector that you want this module to emulate
+	 */
+	public void setSpeedAngle(Vector setting) {
+		this.setAngle(setting.getAngle());
+		this.setSpeed(setting.getValue());
+	}
+
+	/**
+	 * A toString, mostly for debugging reasons
+	 */
+	@Override
+	public String toString() {
+		if (name.equals("")) {
+			return "Swerve Module at: " + spinController.toString() + " " + driveController.toString();
+		} else {
+			return "Swerve Module named: " + name;
+		}
+	}
 
 }

@@ -13,44 +13,43 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
-  // Needs to string
+	// Needs to string
 
-  private SwerveDrive swerveDrive;
-  private Joystick stick;
+	private SwerveDrive swerveDrive;
+	private Joystick stick;
 
-  public CrabDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
-    super(name, id);
+	public CrabDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
+		super(name, id);
 
-    this.swerveDrive = swerveDrive;
-    this.stick = stick;
+		this.swerveDrive = swerveDrive;
+		this.stick = stick;
 
-    // May change in the future
-    if (!stick.getIsXbox()) {
-      System.err.println("Controller must be an Xbox controller. This will need to be remade or this class will not work.");
-    }
-  }
+		// May change in the future
+		if (!stick.getIsXbox()) {
+			System.err.println(
+					"Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+		}
+	}
 
-  @Override
-  public void init() {
+	@Override
+	public void init() {
 
-  }
+	}
 
-  @Override
-  public void run() {
-    swerveDrive.CrabDrive(stick.getX(), stick.getY());
-  }
+	@Override
+	public void run() {
+		swerveDrive.CrabDrive(stick.getX(), stick.getY());
+	}
 
-  @Override
-  public void zeroAllSensors() {
+	@Override
+	public void zeroAllSensors() {
 
-  }
+	}
 
-  @Override
-  public boolean isFinished() {
+	@Override
+	public boolean isFinished() {
 
-    return false;
-  }
+		return false;
+	}
 
 }
-
-
