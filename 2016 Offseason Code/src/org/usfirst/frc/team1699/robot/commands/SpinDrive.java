@@ -46,12 +46,6 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	}
 
 	@Override
-	public boolean isFinished() {
-
-		return false;
-	}
-
-	@Override
 	public String toString() {
 		return "SpinDrive [swerveDrive=" + swerveDrive + ", stick=" + stick + "]";
 	}

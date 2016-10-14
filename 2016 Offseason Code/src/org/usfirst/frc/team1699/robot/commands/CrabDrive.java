@@ -43,12 +43,6 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	public void zeroAllSensors() {
 
 	}
-
-	@Override
-	public boolean isFinished() {
-
-		return false;
-	}
 	
 	@Override
 	public String toString() {
