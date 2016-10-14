@@ -12,7 +12,7 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class UnicornDrive extends org.usfirst.frc.team1699.robot.command.Command {
+public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
   // Needs to string
 

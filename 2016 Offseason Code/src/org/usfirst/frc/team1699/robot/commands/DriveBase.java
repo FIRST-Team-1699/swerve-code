@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1699.robot.commands;
 
-public class DriveBase extends org.usfirst.frc.team1699.robot.command.Command{
+public class DriveBase extends org.usfirst.frc.team1699.utils.command.Command{
   
   private CrabDrive crab;
   private SpinDrive spin;

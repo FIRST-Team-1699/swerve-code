@@ -12,7 +12,7 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class SpinDrive extends org.usfirst.frc.team1699.robot.command.Command {
+public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
   // Needs to string
 
