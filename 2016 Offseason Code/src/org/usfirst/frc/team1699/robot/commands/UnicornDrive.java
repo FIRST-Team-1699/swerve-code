@@ -16,6 +16,7 @@ public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
+	private boolean altControls = false;
 
 	public UnicornDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
 		super(name, id);
@@ -25,8 +26,7 @@ public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command
 
 		// May change in the future
 		if (!stick.getIsXbox()) {
-			System.out.println(
-					"Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+			altControls = true;
 		}
 	}
 
@@ -37,7 +37,11 @@ public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command
 
 	@Override
 	public void run() {
-		swerveDrive.UnicornDrive(stick.getX(), stick.getY(), stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
+		if(altControls){
+			swerveDrive.UnicornDrive(stick.getX(), stick.getY(), stick.getTwist());
+		}else{
+			swerveDrive.UnicornDrive(stick.getX(), stick.getY(), stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
+		}
 	}
 
 	@Override

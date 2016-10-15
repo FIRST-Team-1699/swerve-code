@@ -17,6 +17,7 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	// Needs to string
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
+	private boolean altControls = false;
 
 	public SpinDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
 		super(name, id);
@@ -25,8 +26,7 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
 		// May change in the future
 		if (!stick.getIsXbox()) {
-			System.out.println(
-					"Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+			altControls = true;
 		}
 	}
 
@@ -37,12 +37,20 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
 	@Override
 	public void run() {
-		swerveDrive.RotateDrive(stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
+		if(altControls){
+			swerveDrive.RotateDrive(stick.getTwist());
+		}else{
+			swerveDrive.RotateDrive(stick.getRawAxis(Constants.XBOXTRIGGERAXIS));
+		}
 	}
 
 	@Override
 	public void zeroAllSensors() {
 
+	}
+	
+	public boolean getAltControls(){
+		return altControls;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
+	private boolean altControls = false;
 
 	public CrabDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
 		super(name, id);
@@ -24,8 +25,7 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 
 		// May change in the future
 		if (!stick.getIsXbox()) {
-			System.err.println(
-					"Controller must be an Xbox controller. This will need to be remade or this class will not work.");
+			altControls = true;
 		}
 	}
 
@@ -42,6 +42,10 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	@Override
 	public void zeroAllSensors() {
 
+	}
+	
+	public boolean getAltControls(){
+		return altControls;
 	}
 	
 	@Override
