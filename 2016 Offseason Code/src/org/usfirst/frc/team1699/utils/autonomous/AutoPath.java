@@ -17,4 +17,20 @@ public class AutoPath {
 	public void generateDirections(){
 		
 	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+	public int[] getFileAsString() {
+		return fileAsString;
+	}
+
+	public int getWidth() {
+		return width;
+	}
 }

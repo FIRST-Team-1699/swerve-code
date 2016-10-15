@@ -28,6 +28,7 @@ public class AutoUtils {
 				}
 				
 			}
+			br.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

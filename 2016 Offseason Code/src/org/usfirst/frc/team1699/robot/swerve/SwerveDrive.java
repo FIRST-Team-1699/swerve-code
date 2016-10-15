@@ -12,6 +12,8 @@ package org.usfirst.frc.team1699.robot.swerve;
 
 import java.util.ArrayList;
 
+import org.usfirst.frc.team1699.robot.main.Constants;
+
 public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 
 	// Initializers
@@ -25,10 +27,6 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	private double frameWidth;
 
 	private double rotateAngle;
-
-	protected final double X_DEADZONE = .07;
-	protected final double Y_DEADZONE = .07;
-	protected final double ROTATE_DEADZONE = .07;
 
 	/**
 	 * Constructor a Swerve Drive
@@ -111,8 +109,8 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	public void CrabDrive(double xStick, double yStick) {
 		double speed, angle;
 		// Check if in deadzone
-		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0)
-				&& ((yStick + Y_DEADZONE) < 0)) {
+		if (((xStick + Constants.X_DEADZONE) >= 0) && ((yStick + Constants.Y_DEADZONE) >= 0) && ((xStick - Constants.X_DEADZONE) < 0)
+				&& ((yStick + Constants.Y_DEADZONE) < 0)) {
 			speed = 0;
 			angle = 0;
 		} else {
@@ -142,8 +140,8 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick) {
 		double speed, angle;
 		// Check if in deadzone
-		if (((xStick + X_DEADZONE) >= 0) && ((yStick + Y_DEADZONE) >= 0) && ((xStick - X_DEADZONE) < 0)
-				&& ((yStick + Y_DEADZONE) < 0)) {
+		if (((xStick + Constants.X_DEADZONE) >= 0) && ((yStick + Constants.Y_DEADZONE) >= 0) && ((xStick - Constants.X_DEADZONE) < 0)
+				&& ((yStick + Constants.Y_DEADZONE) < 0)) {
 			speed = 0;
 			angle = 0;
 		} else {
@@ -172,7 +170,7 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	 *            - amount of power to spin the wheels
 	 */
 	public void RotateDrive(double amount) {
-		if (Math.abs(amount) > ROTATE_DEADZONE) {
+		if (Math.abs(amount) > Constants.ROTATE_DEADZONE) {
 			Vector frontLeftVector = new Vector(amount, 1 * rotateAngle);
 			Vector backLeftVector = new Vector(amount, -1 * rotateAngle);
 			Vector frontRightVector = new Vector(amount, -1 * rotateAngle);
@@ -195,7 +193,7 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	public ArrayList<Vector> RotateDriveVectors(double amount) {
 		ArrayList<Vector> returned = new ArrayList<Vector>();
 
-		if (Math.abs(amount) > ROTATE_DEADZONE) {
+		if (Math.abs(amount) > Constants.ROTATE_DEADZONE) {
 			Vector frontLeftVector = new Vector(amount, 1 * rotateAngle);
 			Vector backLeftVector = new Vector(amount, -1 * rotateAngle);
 			Vector frontRightVector = new Vector(amount, -1 * rotateAngle);

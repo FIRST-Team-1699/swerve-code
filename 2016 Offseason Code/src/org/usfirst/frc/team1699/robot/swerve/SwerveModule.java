@@ -31,25 +31,13 @@ public class SwerveModule {
 	private PIDLoop driveLoop;
 
 	// Constructors
-	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder,
-			Encoder _driveEncoder) {
+	public SwerveModule(SpeedController _driveController, SpeedController _spinController, Encoder _spinEncoder, Encoder _driveEncoder) {
 		this.name = "";
 		this.spinController = _spinController;
 		this.driveController = _driveController;
 		this.spinEncoder = _spinEncoder;
 		this.driveEncoder = _driveEncoder;
-		spinLoop = new PIDLoop("" + "spin", .1, .1, 0, this.spinEncoder); // generic
-																			// PID
-																			// values
-																			// in
-																			// here,
-																			// they
-																			// need
-																			// to
-																			// be
-																			// tuned
-																			// or
-																			// input
+		spinLoop = new PIDLoop("" + "spin", .1, .1, 0, this.spinEncoder); // generic PID values in here, they need to be tuned or input
 		driveLoop = new PIDLoop("" + "drive", .1, 0, .1, this.driveEncoder);
 		driveLoop.setUseRate(true);
 	}
