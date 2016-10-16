@@ -7,7 +7,7 @@
  * 
  *         A full rewrite is coming...
  */
-package org.usfirst.frc.team1699.robot.inireader;
+package org.usfirst.frc.team1699.utils.inireader;
 
 public class MessageMaker {
 

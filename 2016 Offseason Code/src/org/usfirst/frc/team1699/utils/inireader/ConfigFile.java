@@ -7,7 +7,7 @@
  *
  * @version v2.0-alpha, released on 5/2/2016
  */
-package org.usfirst.frc.team1699.robot.inireader;
+package org.usfirst.frc.team1699.utils.inireader;
 
 import java.io.File;
 import java.io.FileReader;

@@ -5,7 +5,7 @@
  * 
  * @author thatging3rkid, FIRST Team 1699
  */
-package org.usfirst.frc.team1699.robot.inireader;
+package org.usfirst.frc.team1699.utils.inireader;
 
 import java.util.List;
 import java.util.Arrays;
@@ -70,6 +70,15 @@ public class ConfigSection {
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return null;
 		}
+	}
+	
+	/**
+	 * Get the number of lines in this ConfigSection
+	 * 
+	 * @return the number of lines in this ConfigSection
+	 */
+	public int size() {
+		return this.lines.size();
 	}
 	
 	/**

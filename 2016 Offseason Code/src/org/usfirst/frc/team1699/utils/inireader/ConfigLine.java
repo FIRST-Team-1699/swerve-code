@@ -5,7 +5,7 @@
  *
  * @author thatging3rkid, FIRST Team 1699
  */
-package org.usfirst.frc.team1699.robot.inireader;
+package org.usfirst.frc.team1699.utils.inireader;
 
 /**
  * Stores data from a configuration file. 
