@@ -1,49 +1,63 @@
 /**
  * FIRST Team 1699
  *
+ * A class that represents a file containing configuration info.
+ * 
  * @author thatging3rkid, FIRST Team 1699
  *
- *         A class that represents a file containing configuration info.
- * 
- *         v2.0-alpha, released on 5/2/2016
- *
+ * @version v2.0-alpha, released on 5/2/2016
  */
 package org.usfirst.frc.team1699.robot.inireader;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 
+/**
+ * A way to store, access, and process data in a configuration file.  
+ */
 public class ConfigFile {
 
-	// Initializers
 	File file;
 	BufferedReader reader;
-	ArrayList<ConfigSection> sections = new ArrayList<ConfigSection>();
+	ArrayList<ConfigSection> sections = new ArrayList<>();
 
-	// Constructors
+	/**
+	 * Creates a basic ConfigFile with a file at /home/lvuser/1699-config.ini
+	 */
 	public ConfigFile() {
 		file = new File("/home/lvuser/1699-config.ini");
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath() + " (default)");
 		this.readFile();
 	}
 
+	/**
+	 * Creates a ConfigFile, opening the file specified
+	 * 
+	 * @param fullPath full path to the file
+	 */
 	public ConfigFile(String fullPath) {
 		file = new File(fullPath);
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath());
 		this.readFile();
 	}
 
-	public ConfigFile(File _file) {
-		this.file = _file;
+	/**
+	 * Creates a ConfigFile with the specified File
+	 * @param file
+	 */
+	public ConfigFile(File file) {
+		this.file = file;
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath());
 		this.readFile();
 	}
 
-	// Methods
+	/**
+	 * Reads the file. Executed automatically on construction, but it can be force reread.
+	 */
 	public void readFile() {
 		ConfigSection section = new ConfigSection("global");
 		this.sections.add(section);
@@ -120,7 +134,13 @@ public class ConfigFile {
 					}
 					count1 += 1;
 				}
-
+				
+				// Case if '=' is not found, allows for more freedom, but you have to code it yourself
+				if (count1 == line.length()) {
+					section1 = "";
+					section2 = line; 
+				}
+				
 				// <insert witty joke here>
 				ConfigLine cld = new ConfigLine(section1.toLowerCase(), (Object) section2);
 				section.add(cld);
@@ -147,6 +167,12 @@ public class ConfigFile {
 
 	}
 
+	/**
+	 * Gets the specified ConfigSection if it exists. If not, then throw an exception.
+	 * 
+	 * @param name the name of the ConfigSection to find.
+	 * @return the ConfigSection matching name if found.
+	 */
 	public ConfigSection findSection(String name) {
 		// Cycle through the ArrayList, return ConfigSection if names are equal
 		for (ConfigSection cs : sections) {
@@ -157,13 +183,19 @@ public class ConfigFile {
 		// Throw exception if not found
 		throw new NotFoundException("Section not found: " + name + ".");
 	}
-
-	// Testing method
-	protected void dump() {
-		for (ConfigSection cs : sections) {
-			System.out.println(cs.toString());
+	
+	/**
+	 * Returns the ConfigSection at the specified index. Useful for autonomous. Returns null if out of bounds.
+	 * 
+	 * @param index the index of the internal ArrayList
+	 * @return the ConfigSection at that index if it exists, else null
+	 */
+	public ConfigSection getSection(int index) {
+		try {
+			return this.sections.get(index);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return null;
 		}
-
+		
 	}
-
 }

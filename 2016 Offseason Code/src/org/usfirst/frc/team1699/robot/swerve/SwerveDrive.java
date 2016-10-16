@@ -14,15 +14,16 @@ import java.util.ArrayList;
 
 import org.usfirst.frc.team1699.robot.main.Constants;
 
+/**
+ * Drive code, similar to RobotDrive, except for swerve drive robots.
+ */
 public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 
-	// Initializers
 	private SwerveModule frontLeft;
 	private SwerveModule backLeft;
 	private SwerveModule frontRight;
 	private SwerveModule backRight;
 
-	// Rotation stuff
 	private double frameLength;
 	private double frameWidth;
 
@@ -32,18 +33,18 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	 * Constructor a Swerve Drive
 	 * 
 	 * @param _frontLeft
-	 *            - reference to the front left module
+	 *            reference to the front left module
 	 * @param _backLeft
-	 *            - reference to the back left module
+	 *            reference to the back left module
 	 * @param _frontRight
-	 *            - reference to the front right module
+	 *            reference to the front right module
 	 * @param _backRight
-	 *            - reference to the back left module
+	 *            reference to the back left module
 	 * @param _length
-	 *            - frame length or distance between wheels in the "front" in
+	 *            frame length or distance between wheels in the "front" in
 	 *            inches
 	 * @param _width
-	 *            - frame width or distance between wheels on a "side" in inches
+	 *            frame width or distance between wheels on a "side" in inches
 	 */
 	public SwerveDrive(SwerveModule _frontLeft, SwerveModule _backLeft, SwerveModule _frontRight,
 			SwerveModule _backRight, double _length, double _width) {
@@ -99,12 +100,10 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	}
 
 	/**
-	 * A drive method that aligns the modules and drives in any direction
+	 * A drive method that aligns the modules and drives in any direction.
 	 * 
-	 * @param xStick
-	 *            - x value
-	 * @param yStick
-	 *            - y value
+	 * @param xStick value of the x axis.
+	 * @param yStick value of the y axis.
 	 */
 	public void CrabDrive(double xStick, double yStick) {
 		double speed, angle;
@@ -131,10 +130,8 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	/**
 	 * Generates the CrabDrive output as an ArrayList of Vectors
 	 * 
-	 * @param xStick
-	 *            - x value
-	 * @param yStick
-	 *            - y value
+	 * @param xStick value of the x axis
+	 * @param yStick value of the y axis
 	 * @return an ArrayList with 4 vectors
 	 */
 	public ArrayList<Vector> CrabDriveVectors(double xStick, double yStick) {
@@ -166,8 +163,7 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	 * Turns all the modules to a certain degree that then allows the robot on
 	 * spin a central point
 	 * 
-	 * @param amount
-	 *            - amount of power to spin the wheels
+	 * @param amount amount of power to spin the wheels
 	 */
 	public void RotateDrive(double amount) {
 		if (Math.abs(amount) > Constants.ROTATE_DEADZONE) {
@@ -186,8 +182,7 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	/**
 	 * Generates the RotateDrive output as an ArrayList of Vectors
 	 * 
-	 * @param amount
-	 *            - amount of power to spin the wheels
+	 * @param amount amount of power to spin the wheels
 	 * @return an ArrayList with 4 vectors
 	 */
 	public ArrayList<Vector> RotateDriveVectors(double amount) {
@@ -221,12 +216,9 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	 * @see http://www.applepirobotics.org/wp-content/uploads/2013/11, Drive
 	 *      Trains part 3, slide 8
 	 * 
-	 * @param xStick
-	 *            - x value
-	 * @param yStick
-	 *            - y value
-	 * @param rotateStick
-	 *            - amount of rotate
+	 * @param xStick x value
+	 * @param yStick y value
+	 * @param rotateStick  amount of rotate
 	 */
 	public void UnicornDrive(double xStick, double yStick, double rotateStick) {
 		ArrayList<Vector> crabVectors = this.CrabDriveVectors(xStick, yStick);
@@ -241,10 +233,8 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	/**
 	 * Tank drive for swerve, who would want this?
 	 * 
-	 * @param leftValue
-	 *            - left stick value
-	 * @param rightValue
-	 *            - right stick value
+	 * @param leftValue left stick value
+	 * @param rightValue right stick value
 	 */
 	@Override
 	public void tankDrive(double leftValue, double rightValue) {
@@ -255,4 +245,6 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 
 		super.tankDrive(leftValue, rightValue);
 	}
+	
+	
 }

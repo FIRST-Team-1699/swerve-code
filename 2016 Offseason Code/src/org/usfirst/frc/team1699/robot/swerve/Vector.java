@@ -8,8 +8,11 @@
  */
 package org.usfirst.frc.team1699.robot.swerve;
 
+/**
+ * A number that has a magnitude (value) and direction (angle). 
+ */
 public class Vector {
-	// Initializers
+	
 	private double angle;
 	private double value;
 
@@ -24,41 +27,55 @@ public class Vector {
 	/**
 	 * The suggested constructor
 	 * 
-	 * @param _value
-	 *            - magnitude
-	 * @param _angle
-	 *            - angle
+	 * @param value magnitude
+	 * @param angle angle
 	 */
-	public Vector(double _value, double _angle) {
-		this.angle = _angle;
-		this.value = _value;
+	public Vector(double value, double angle) {
+		this.angle = angle;
+		this.value = value;
 	}
 
-	// Get and set methods
-	public void setAngle(double _angle) {
-		this.angle = _angle;
+	/**
+	 * Set the angle
+	 * 
+	 * @param angle new angle
+	 */
+	public void setAngle(double angle) {
+		this.angle = angle;
 	}
 
-	public void setValue(double _value) {
-		this.value = _value;
+	/**
+	 * Set the value
+	 * 
+	 * @param value new value
+	 */
+	public void setValue(double value) {
+		this.value = value;
 	}
-
+	
+	/**
+	 * Get the angle
+	 * 
+	 * @return the angle
+	 */
 	public double getAngle() {
 		return angle;
 	}
-
+	
+	/**
+	 * Get the value
+	 * 
+	 * @return the value
+	 */
 	public double getValue() {
 		return value;
 	}
 
-	// Methods
 	/**
 	 * Adds two vectors and sets the current vector to the resultant
 	 * 
-	 * @param v1
-	 *            - Vector 1
-	 * @param v2
-	 *            - Vector 2
+	 * @param v1 Vector 1
+	 * @param v2 Vector 2
 	 */
 	public void setToResultantVector(Vector v1, Vector v2) {
 		double v1x = v1.getValue() * Math.cos(Math.toRadians(v1.getAngle()));
@@ -78,10 +95,8 @@ public class Vector {
 	/**
 	 * Returns the resultant of two vectors
 	 * 
-	 * @param v1
-	 *            - Vector 1
-	 * @param v2
-	 *            - Vector 2
+	 * @param v1 Vector 1
+	 * @param v2 Vector 2
 	 * @return the vector addition of v1 and v2
 	 */
 	public static Vector getResultantVector(Vector v1, Vector v2) {
@@ -126,8 +141,7 @@ public class Vector {
 	/**
 	 * Tells if two objects are equal
 	 * 
-	 * @param o
-	 *            - an Object to compare to
+	 * @param o an Object to compare to
 	 * @return true if the objects have the same angle and value
 	 */
 	@Override

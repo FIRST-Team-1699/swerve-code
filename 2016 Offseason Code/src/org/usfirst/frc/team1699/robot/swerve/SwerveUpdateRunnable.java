@@ -12,6 +12,11 @@ import java.util.ArrayList;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
+/**
+ * Updates the PID loops of some SwerveModule objects.
+ * 
+ * @inheritDoc
+ */
 public class SwerveUpdateRunnable implements Runnable {
 
 	private DriverStation ds;
@@ -21,10 +26,8 @@ public class SwerveUpdateRunnable implements Runnable {
 	/**
 	 * Constructor for the SwerveUpdateRunnable
 	 * 
-	 * @param _ds
-	 *            - reference to the DriverStation instance
-	 * @param _modules
-	 *            - an ArrayList of SwerveModules
+	 * @param _ds reference to the DriverStation instance
+	 * @param _modules an ArrayList of SwerveModules
 	 */
 	public SwerveUpdateRunnable(DriverStation _ds, ArrayList<SwerveModule> _modules) {
 		this.ds = _ds;
@@ -32,14 +35,13 @@ public class SwerveUpdateRunnable implements Runnable {
 	}
 
 	/**
-	 * Overridden run method, updates all the spin and drive PID loops in the
-	 * ArrayList of SwerveModules
-	 * 
-	 * Note: it is surrounded in a try/catch to catch any stray Exceptions that
-	 * rise
+	 * Overridden run method, updates all the spin and drive PID loops in the ArrayList of SwerveModule objects.
 	 */
 	@Override
 	public void run() {
+		/* Note: it is surrounded in a try/catch to catch any stray 
+		 * Exceptions that rise
+	 	 */
 		try {
 			// Check if the robot is enabled
 			if (ds.isEnabled()) {

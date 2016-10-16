@@ -6,7 +6,7 @@
  * 
  * @author thatging3rkid, FIRST Team 1699
  * 
- * @see https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html
+ * @see {@link https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ScheduledExecutorService.html}
  * 
  */
 package org.usfirst.frc.team1699.robot.swerve;
@@ -19,6 +19,11 @@ import java.util.concurrent.ScheduledExecutorService;
 
 import edu.wpi.first.wpilibj.DriverStation;
 
+/**
+ * A service that updates SwerveModule objects at a set interval or individually
+ * 
+ * @see {@link java.util.concurrent.SchdeuledExecutorService}
+ */
 public class SwerveUpdateService {
 
 	private ArrayList<SwerveModule> modules;
@@ -30,8 +35,7 @@ public class SwerveUpdateService {
 	/**
 	 * Constructor for a SwerveUpdateService
 	 * 
-	 * @param _modules
-	 *            - an ArrayList of modules
+	 * @param _modules an ArrayList of modules
 	 */
 	public SwerveUpdateService(ArrayList<SwerveModule> _modules) {
 		this.modules = _modules;
@@ -50,7 +54,7 @@ public class SwerveUpdateService {
 	/**
 	 * A single module update, should only be used in special situations
 	 * 
-	 * @param module
+	 * @param module a single module to update
 	 */
 	public void updateModule(SwerveModule module) {
 		ArrayList<SwerveModule> singleModule = new ArrayList<>();
@@ -65,9 +69,8 @@ public class SwerveUpdateService {
 	 */
 	public void updateModules() {
 		final SwerveUpdateRunnable run = new SwerveUpdateRunnable(this.ds, this.modules);
-		// scheduler.scheduleWithFixedDelay(reference to Runnable class, initial
-		// delay, time between
-		// executions, unit);
+		// scheduler.scheduleWithFixedDelay(reference to Runnable class, 
+		// initial delay, time between executions, unit);
 		@SuppressWarnings("unused")
 		final ScheduledFuture<?> future = scheduler.scheduleWithFixedDelay(run, 100, 100, TimeUnit.MILLISECONDS);
 	}
