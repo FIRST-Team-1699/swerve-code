@@ -12,12 +12,27 @@ import org.usfirst.frc.team1699.robot.swerve.SwerveDrive;
 
 import edu.wpi.first.wpilibj.Joystick;
 
+/**
+ * Command for unicorn drive
+ */
 public class UnicornDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	
 	private SwerveDrive swerveDrive;
 	private Joystick stick;
 	private boolean altControls = false;
-
+	
+	/**
+	 * Constructor for Crab Drive
+	 * 
+	 * @param swerveDrive
+	 * 			reference to the swerve drive
+	 * @param stick
+	 * 			reference to a joy stick
+	 * @param name
+	 * 			name for command
+	 * @param id
+	 * 			id for command
+	 */
 	public UnicornDrive(SwerveDrive swerveDrive, Joystick stick, String name, int id) {
 		super(name, id);
 
