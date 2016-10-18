@@ -1,7 +1,11 @@
 /**
+ * FIRST Team 1699
+ * 
  * Abstract Command Class
  * 
  * @author squirlemaster42, FIRST Team 1699
+ * 
+ * @version v0.2-norobot
  */
 package org.usfirst.frc.team1699.utils.command;
 
