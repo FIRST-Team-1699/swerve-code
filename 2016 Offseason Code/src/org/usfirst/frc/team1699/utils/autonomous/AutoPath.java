@@ -1,3 +1,8 @@
+/**
+ * Class that generates a path for auto
+ * 
+ * @author squirlemaster42
+ */
 package org.usfirst.frc.team1699.utils.autonomous;
 
 public class AutoPath {
@@ -22,12 +27,12 @@ public class AutoPath {
 		return path;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
-	}
-
 	public int[] getFileAsString() {
 		return fileAsString;
+	}
+	
+	public void setWidth(int width){
+		this.width = width;
 	}
 
 	public int getWidth() {

@@ -1,7 +1,7 @@
 /**
  * FIRST Team 1699
  * 
- * Robot.java
+ * Main class, most if not all of the method here are called by the robot
  * 
  * @author thatging3rkid, FIRST Team 1699
  * @author squirlemaster42, FIRST Team 1699

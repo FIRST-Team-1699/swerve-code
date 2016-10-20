@@ -1,5 +1,5 @@
 /**
- * Constants
+ * Class that hold all of our constants and makes them easy to access
  * 
  * @author squirlemaster42, FIRST Team 1699
  */
