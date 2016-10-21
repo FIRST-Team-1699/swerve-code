@@ -14,7 +14,7 @@ public abstract class Command {
 	private String name;
 	private int id;
 
-	// id is used for commands run in auto. It should be set to and integer
+	// id is used for commands run in auto. It should be set to an integer
 	// value that corresponds to
 	// the value used when wanting to call the command from the autonomous file.
 	public Command(String name, int id) {
