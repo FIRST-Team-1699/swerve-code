@@ -25,7 +25,7 @@ public class AutoPath {
 		return fileAsString;
 	}
 	
-	public void setWidth(int numLines){
+	public void setNumLines(int numLines){
 		this.numLines = numLines;
 	}
 
