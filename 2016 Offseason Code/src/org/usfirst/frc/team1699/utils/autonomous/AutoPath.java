@@ -20,7 +20,7 @@ public class AutoPath {
 	public String getPath() {
 		return path;
 	}
-
+ 
 	public String[] getFileAsString() {
 		return fileAsString;
 	}
