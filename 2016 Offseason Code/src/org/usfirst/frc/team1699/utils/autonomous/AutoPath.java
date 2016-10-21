@@ -8,34 +8,28 @@ package org.usfirst.frc.team1699.utils.autonomous;
 public class AutoPath {
 	
 	private String path;
-	private int[] fileAsString;
-	private int width;
+	private String[] fileAsString;
+	private int numLines;
 	
 	public AutoPath(String path, int width){
 		this.path = path;
-		this.width = width;
-		fileAsString = AutoUtils.loadFileAsArray(path, width);
+		this.numLines = width;
+		fileAsString = AutoUtils.loadFileAsArray(path, numLines);
 	}
 	
-	
-	
-	public void generateDirections(){
-		
-	}
-
 	public String getPath() {
 		return path;
 	}
 
-	public int[] getFileAsString() {
+	public String[] getFileAsString() {
 		return fileAsString;
 	}
 	
-	public void setWidth(int width){
-		this.width = width;
+	public void setWidth(int numLines){
+		this.numLines = numLines;
 	}
 
 	public int getWidth() {
-		return width;
+		return numLines;
 	}
 }

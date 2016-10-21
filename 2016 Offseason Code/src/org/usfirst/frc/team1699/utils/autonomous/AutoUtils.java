@@ -20,8 +20,8 @@ public class AutoUtils {
 		}
 	}
 	
-	public static int[] loadFileAsArray(String path, int width){
-		int[] fileAsString = new int[width];
+	public static String[] loadFileAsArray(String path, int numLines){
+		String[] fileAsString = new String[numLines];
 		try ( // try-with-resources; automatically .close() at the end
 			BufferedReader br = new BufferedReader(new FileReader(path));
 			) {
@@ -29,7 +29,7 @@ public class AutoUtils {
 			while((line = br.readLine()) != null){
 				String[] l = line.split(" ");
 				for(int j = 0; j < l.length; j++){
-					fileAsString[j] = AutoUtils.parseInt(l[j]);
+					fileAsString[j] = l[j];
 				}
 				
 			}
