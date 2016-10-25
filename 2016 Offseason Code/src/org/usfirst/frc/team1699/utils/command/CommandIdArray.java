@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class CommandIdArray {
 	// Should store name and id and make sure that no id or name is a duplicate
-	// Names need to be added
 
 	private ArrayList<Integer> list;
 
