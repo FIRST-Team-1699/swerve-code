@@ -66,6 +66,11 @@ public class SpinDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	public boolean getAltControls(){
 		return altControls;
 	}
+	
+	@Override
+	public void outputToDashBoard() {
+		
+	}
 
 	@Override
 	public String toString() {

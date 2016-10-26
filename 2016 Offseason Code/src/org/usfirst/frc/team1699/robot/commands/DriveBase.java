@@ -60,6 +60,13 @@ public class DriveBase extends org.usfirst.frc.team1699.utils.command.Command {
 	}
 	
 	@Override
+	public void outputToDashBoard() {
+		crab.outputToDashBoard();
+		spin.outputToDashBoard();
+		unicorn.outputToDashBoard();
+	}
+	
+	@Override
 	public String toString() {
 		return "DriveBase [crab=" + crab + ", spin=" + spin + ", unicorn=" + unicorn + "]";
 	}

@@ -64,7 +64,8 @@ public class CrabDrive extends org.usfirst.frc.team1699.utils.command.Command {
 	}
 	
 	@Override
-	public String toString() {
-		return "UnicornDrive [swerveDrive=" + swerveDrive + ", stick=" + stick + "]";
+	public void outputToDashBoard() {
+		
 	}
+	
 }
