@@ -21,7 +21,7 @@ public abstract class Command {
 		this.name = name;
 		this.id = id;
 		
-		
+		//Add code to add name and id to respective lists
 	}
 
 	public abstract void init();
