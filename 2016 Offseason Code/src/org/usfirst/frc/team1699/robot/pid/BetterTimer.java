@@ -21,7 +21,6 @@ public class BetterTimer extends edu.wpi.first.wpilibj.Timer {
 	 * Creates a better timer that has not been initialized.
 	 */
 	public BetterTimer() {
-		super();
 		this.timePassed = (double) 0;
 	}
 

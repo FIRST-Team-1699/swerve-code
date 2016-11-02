@@ -23,7 +23,7 @@ public class PIDLoop {
 	private double oldValue;
 	private double goalValue;
 
-	private BetterTimer timer = new BetterTimer();
+	private BetterTimer timer;
 	private long iterations = 0;
 	private double integralOut = 0;
 
@@ -47,6 +47,7 @@ public class PIDLoop {
 		this.Dk = _Dk;
 		this.pot = _pot;
 		this.updateValues();
+		this.timer = new BetterTimer();
 	}
 
 	/**
@@ -65,7 +66,19 @@ public class PIDLoop {
 		this.Dk = _Dk;
 		this.enc = _enc;
 		this.updateValues();
+		this.timer = new BetterTimer();
 	}
+	
+	//NEVER USE FOR TESTING ONLY
+	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk) {
+		this.name = _name;
+		this.Pk = _Pk;
+		this.Ik = _Ik;
+		this.Dk = _Dk;
+		this.updateValues();
+		this.timer = new BetterTimer();
+	}
+
 
 	/**
 	 * Get the value of the P constant
@@ -157,6 +170,14 @@ public class PIDLoop {
 	 */
 	public void setGoal(double _goalValue) {
 		this.goalValue = _goalValue;
+	}
+	
+	public double getCurValue() {
+		return curValue;
+	}
+
+	public void setCurValue(double curValue) {
+		this.curValue = curValue;
 	}
 
 	/**
