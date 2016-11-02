@@ -68,17 +68,6 @@ public class PIDLoop {
 		this.updateValues();
 		this.timer = new BetterTimer();
 	}
-	
-	//NEVER USE FOR TESTING ONLY
-	public PIDLoop(String _name, double _Pk, double _Ik, double _Dk) {
-		this.name = _name;
-		this.Pk = _Pk;
-		this.Ik = _Ik;
-		this.Dk = _Dk;
-		this.updateValues();
-		this.timer = new BetterTimer();
-	}
-
 
 	/**
 	 * Get the value of the P constant
