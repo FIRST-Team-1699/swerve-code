@@ -1,3 +1,0 @@
-# Allows any testing files to easily be removed from production code after testing is complete.
-!PIDLoopTest.java
-!EncoderEmulator.java
