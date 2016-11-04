@@ -79,5 +79,34 @@ public class ConfigLine {
 	public String toString() {
 		return "Name: " + this.name + "\nValue: " + this.value.toString();
 	}
+	
+	/**
+	 * Generates a hash code for this object, used for hashed data sets.
+	 * 
+	 * @return the hash code of this object
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((value == null) ? 0 : value.hashCode());
+		return result;
+	}
 
+	/**
+	 * Tells if two objects are equal
+	 * 
+	 * @param obj the object to compare to 
+	 * @return true if the two objects are equal to each other
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof ConfigLine) {
+			ConfigLine cl = (ConfigLine) obj;
+			return this.name.equals(cl.getName()) && this.value.equals(cl.getValue());
+		} else {
+			return false;
+		}
+	}
 }

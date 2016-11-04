@@ -18,7 +18,7 @@ public class ConfigSection {
 
 	private String name;
 
-	private ArrayList<ConfigLine> lines = new ArrayList<ConfigLine>();
+	private ArrayList<ConfigLine> lines = new ArrayList<>();
 
 	/**
 	 * Creates a ConfigSection with the name provided
@@ -66,9 +66,28 @@ public class ConfigSection {
 	 */
 	public ConfigLine getLine(int index) {
 		try {
-			return this.lines.get(index);
+			ConfigLine cla = this.lines.get(index);
+			return new ConfigLine(cla.getName(), cla.getValue());
 		} catch (ArrayIndexOutOfBoundsException e) {
 			return null;
+		}
+	}
+	
+	/**
+	 * Get the contents of this ConfigSection. Useful for autonomous. 
+	 * 
+	 * @return an ArrayList of ConfigLines that make up this ConfigSection
+	 */
+	public ArrayList<ConfigLine> getContents() {
+		if (this.lines == null) {
+			return null;
+		} else {
+			ArrayList<ConfigLine> output = new ArrayList<>();
+			for (ConfigLine cl : this.lines) {
+				ConfigLine cla = new ConfigLine(cl.getName(), cl.getValue());
+				output.add(cla);
+			}
+			return output;
 		}
 	}
 	

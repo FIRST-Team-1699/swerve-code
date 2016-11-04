@@ -5,7 +5,7 @@
  * 
  * @author thatging3rkid, FIRST Team 1699
  *
- * @version v2.0-alpha, released on 5/2/2016
+ * @version v2.0rc1, released on 10/19/2016
  */
 package org.usfirst.frc.team1699.utils.inireader;
 
@@ -21,15 +21,15 @@ import java.io.FileNotFoundException;
  */
 public class ConfigFile {
 
-	File file;
-	BufferedReader reader;
-	ArrayList<ConfigSection> sections = new ArrayList<>();
+	private File file;
+	
+	private ArrayList<ConfigSection> sections = new ArrayList<>();
 
 	/**
 	 * Creates a basic ConfigFile with a file at /home/lvuser/1699-config.ini
 	 */
 	public ConfigFile() {
-		file = new File("/home/lvuser/1699-config.ini");
+		this.file = new File("/home/lvuser/1699-config.ini");
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath() + " (default)");
 		this.readFile();
 	}
@@ -40,7 +40,7 @@ public class ConfigFile {
 	 * @param fullPath full path to the file
 	 */
 	public ConfigFile(String fullPath) {
-		file = new File(fullPath);
+		this.file = new File(fullPath);
 		MessageMaker.out("Initalized with file: " + file.getAbsolutePath());
 		this.readFile();
 	}
@@ -62,8 +62,7 @@ public class ConfigFile {
 		ConfigSection section = new ConfigSection("global");
 		this.sections.add(section);
 
-		try {
-			reader = new BufferedReader(new FileReader(file));
+		try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
 			String line = reader.readLine();
 			while (line != null) {
 				// Checks for blank line
@@ -154,17 +153,7 @@ public class ConfigFile {
 			MessageMaker.out("File not found. Probably crashing about now.");
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				// Closes file
-				if (reader != null) {
-					reader.close();
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
-
 	}
 
 	/**
@@ -177,7 +166,7 @@ public class ConfigFile {
 		// Cycle through the ArrayList, return ConfigSection if names are equal
 		for (ConfigSection cs : sections) {
 			if (cs.getName().equals(name)) {
-				return cs;
+				return cs; // this needs to be replaced to return a copy of the section, not a reference to it
 			}
 		}
 		// Throw exception if not found
