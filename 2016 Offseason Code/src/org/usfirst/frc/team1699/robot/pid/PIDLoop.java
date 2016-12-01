@@ -21,9 +21,11 @@ public class PIDLoop {
 	private double Pk;
 	private double Ik;
 	private double Dk;
-
-	private double Istore = 0;
-	private double Dtemp = 0;
+	
+	//The sum of all errors used for estimating Integral
+	private double Istore = 0;  
+	//The previous error used for estimating Derivative
+	private double Dtemp = 0;  
 	
 	private double goal;
 	
@@ -129,10 +131,11 @@ public class PIDLoop {
 		
 		// Time for math.
 		// Calculating P
+		//The weighted error between goal and current value
 		double err = (goal - sens.get());
 		
 		double Pvalue = this.Pk * err;
-
+		
 		this.Istore += err;
 		
 		// short circuit if the goal and current value are the same
@@ -140,10 +143,16 @@ public class PIDLoop {
 			return 0.0;
 		}
 		
-		// Calculating I
+		/* Calculating I
+		 * The weighted estimate of the area under the error curve
+		 * Speeds up movement towards goal can cause overshoot 
+		 */
 		double Ivalue = this.Ik * Istore;
 
-		// Calculating D
+		/* Calculating D
+		 * The weighted estimate of the slope of the error curve
+		 * Tries compensate for future error may cause instability 
+		 */ 
 		double Dvalue = this.Dk * (Dtemp - err);
 
 		this.Dtemp = err;
