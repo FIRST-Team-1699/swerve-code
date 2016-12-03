@@ -96,7 +96,7 @@ public class SwerveDrive extends edu.wpi.first.wpilibj.RobotDrive {
 		// Construct the update service
 		SwerveUpdateService service = new SwerveUpdateService(modules);
 		// Start the service
-		service.updateModules();
+		service.start();
 	}
 
 	/**

@@ -301,7 +301,7 @@ public class SwerveModule {
 	/**
 	 * Updates the Drive and Spin PID loops
 	 */
-	public void updatePID() {
+	public synchronized void updatePID() {
 		this.updateSpinPID();
 		this.updateDrivePID();
 	}
@@ -309,14 +309,14 @@ public class SwerveModule {
 	/**
 	 * Updates only the Spin PID loop
 	 */
-	public void updateSpinPID() {
+	public synchronized void updateSpinPID() {
 		spinController.set(spinLoop.output());
 	}
 
 	/**
 	 * Updates only the Drive PID loop
 	 */
-	public void updateDrivePID() {
+	public synchronized void updateDrivePID() {
 		double curPIDout = driveLoop.output();
 		driveController.set(curPIDout - this.oldPIDout);
 		this.oldPIDout = curPIDout;
