@@ -169,7 +169,7 @@ public class SwerveModule {
 	 * 
 	 * @return the value of the drive Encoder
 	 */
-	public double getDriveEncoderValue() {
+	protected double getDriveEncoderValue() {
 		if (this.driveEncoder == null) {
 			return 0.0;
 		} else {
@@ -195,8 +195,12 @@ public class SwerveModule {
 	 * 
 	 * @return the value of the spin Encoder
 	 */
-	public double getSpinEncoderValue() {
-		return this.spinEncoder.get();
+	protected double getSpinEncoderValue() {
+		if (this.spinEncoder == null) {
+			return 0.0;
+		} else {
+			return this.spinEncoder.get();
+		}
 	}
 
 	/**
